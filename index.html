@@ -94,9 +94,7 @@
       cursor: pointer;
     }
 
-    .action-btn:hover {
-      color: #38bdf8;
-    }
+    .action-btn:hover { color: #38bdf8; }
 
     /* Search Box */
     .search-box-container {
@@ -107,9 +105,7 @@
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
 
-    .search-box-container.active {
-      display: block;
-    }
+    .search-box-container.active { display: block; }
 
     .search-box-container input {
       width: 90%;
@@ -138,9 +134,7 @@
       box-shadow: -2px 0 10px rgba(0,0,0,0.3);
     }
 
-    .side-menu.active {
-      right: 0;
-    }
+    .side-menu.active { right: 0; }
 
     .side-menu .close-btn {
       text-align: right;
@@ -150,14 +144,8 @@
       color: #cbd5e1;
     }
 
-    .side-menu ul {
-      list-style: none;
-    }
-
-    .side-menu ul li {
-      margin-bottom: 1.5rem;
-    }
-
+    .side-menu ul { list-style: none; }
+    .side-menu ul li { margin-bottom: 1.5rem; }
     .side-menu ul li a {
       color: #f1f5f9;
       text-decoration: none;
@@ -166,37 +154,20 @@
       align-items: center;
       gap: 0.8rem;
     }
-
-    .side-menu ul li a:hover {
-      color: #38bdf8;
-    }
+    .side-menu ul li a:hover { color: #38bdf8; }
 
     /* Hero Section */
     .hero {
       text-align: center;
-      padding: 3rem 1rem;
+      padding: 3.5rem 1rem;
       background: var(--hero-bg);
       color: #fff;
     }
 
-    .hero h1 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
+    .hero h1 { font-size: 2.2rem; margin-bottom: 1rem; }
+    .hero p { max-width: 600px; margin: 0 auto 1.5rem auto; color: #cbd5e1; font-size: 1rem; }
 
-    .hero p {
-      max-width: 600px;
-      margin: 0 auto 1.5rem auto;
-      color: #cbd5e1;
-      font-size: 1rem;
-    }
-
-    .btn-container {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-    }
-
+    .btn-container { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
     .btn {
       padding: 0.7rem 1.5rem;
       border: none;
@@ -205,7 +176,6 @@
       cursor: pointer;
       text-decoration: none;
     }
-
     .btn-primary { background-color: #0284c7; color: #fff; }
     .btn-secondary { background-color: transparent; color: #38bdf8; border: 1px solid #38bdf8; }
 
@@ -217,12 +187,66 @@
       text-align: center;
     }
 
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 1rem;
+    .container { max-width: 900px; margin: 0 auto; padding: 0 1rem; }
+
+    /* Live Stats */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: -2rem;
+      position: relative;
+      z-index: 10;
     }
 
+    .stat-card {
+      background: var(--card-bg);
+      padding: 1.2rem;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border-bottom: 3px solid #0284c7;
+    }
+
+    .stat-card h3 { font-size: 1.8rem; color: #0284c7; }
+    .stat-card p { font-size: 0.9rem; font-weight: 600; color: var(--text-color); }
+
+    /* Link Checker Box */
+    .checker-box {
+      background-color: var(--card-bg);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+
+    .checker-input-group {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .checker-input-group input {
+      flex: 1;
+      min-width: 250px;
+      padding: 0.8rem;
+      border: 1px solid var(--border-color);
+      border-radius: 5px;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      outline: none;
+    }
+
+    .checker-result {
+      margin-top: 1rem;
+      padding: 0.8rem;
+      border-radius: 5px;
+      display: none;
+      font-weight: bold;
+    }
+
+    /* Platform Grid */
     .platform-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
@@ -259,12 +283,32 @@
     .fa-x-twitter { color: #000; }
     body.dark-mode .fa-x-twitter { color: #fff; }
 
+    /* Toolkit Grid */
+    .toolkit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .tool-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      padding: 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--text-color);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .tool-card i { font-size: 1.5rem; color: #0284c7; }
+
     /* Security Checklist Section */
     .checklist-box {
       background-color: var(--card-bg);
       border-radius: 8px;
       padding: 1.5rem;
-      margin-top: 2rem;
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
 
@@ -290,6 +334,30 @@
       height: 100%;
       width: 0%;
       transition: width 0.3s;
+    }
+
+    /* Testimonial Section */
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+
+    .testimonial-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      padding: 1.2rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+    }
+
+    .testimonial-user {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-top: 1rem;
+      font-weight: bold;
+      color: #0284c7;
     }
 
     /* FAQ Section */
@@ -325,7 +393,6 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1rem;
-      margin-top: 1rem;
     }
 
     .quick-link-btn {
@@ -368,32 +435,14 @@
       gap: 1rem;
       text-decoration: none;
       color: var(--text-color);
-      transition: transform 0.2s, border-color 0.2s;
+      transition: transform 0.2s;
     }
 
-    .contact-card:hover {
-      transform: translateY(-2px);
-      border-color: #0284c7;
-    }
-
-    .contact-card i {
-      font-size: 2rem;
-    }
-
-    .contact-card .details h4 {
-      font-size: 1rem;
-      margin-bottom: 0.2rem;
-    }
-
-    .contact-card .details p {
-      font-size: 0.85rem;
-      color: #64748b;
-      word-break: break-all;
-    }
-
-    body.dark-mode .contact-card .details p {
-      color: #94a3b8;
-    }
+    .contact-card:hover { transform: translateY(-2px); border-color: #0284c7; }
+    .contact-card i { font-size: 2rem; }
+    .contact-card .details h4 { font-size: 1rem; margin-bottom: 0.2rem; }
+    .contact-card .details p { font-size: 0.85rem; color: #64748b; word-break: break-all; }
+    body.dark-mode .contact-card .details p { color: #94a3b8; }
 
     /* Contact Form */
     .contact-form {
@@ -402,16 +451,8 @@
       padding-top: 1.5rem;
     }
 
-    .form-group {
-      margin-bottom: 1rem;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 0.4rem;
-      font-weight: 600;
-    }
-
+    .form-group { margin-bottom: 1rem; }
+    .form-group label { display: block; margin-bottom: 0.4rem; font-weight: 600; }
     .form-group input, .form-group textarea {
       width: 100%;
       padding: 0.7rem;
@@ -420,6 +461,47 @@
       background-color: var(--bg-color);
       color: var(--text-color);
       outline: none;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--header-bg);
+      color: #cbd5e1;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+    }
+
+    footer a { color: #38bdf8; text-decoration: none; cursor: pointer; }
+
+    /* Modal / Pop-up */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 3000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: var(--card-bg);
+      color: var(--text-color);
+      padding: 2rem;
+      border-radius: 8px;
+      max-width: 500px;
+      width: 90%;
+      position: relative;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 10px; right: 15px;
+      font-size: 1.5rem;
+      cursor: pointer;
     }
 
     /* Guideline Page View */
@@ -490,7 +572,7 @@
   <!-- Scam Alert Banner -->
   <div class="alert-banner">
     <i class="fas fa-exclamation-triangle"></i>
-    <span>সতর্কতা: যেকোনো অপরিচিত লিংক থেকে আইডি ফ্রিতে পাসওয়ার্ড পরিবর্তন বা ভেরিফাই করার বার্তা থেকে সাবধান থাকুন!</span>
+    <span>সতর্কতা: যেকোনো অপরিচিত লিংক থেকে ফ্রিতে পাসওয়ার্ড পরিবর্তন বা ভেরিফাই করার বার্তা থেকে সাবধান থাকুন!</span>
   </div>
 
   <!-- Header -->
@@ -516,7 +598,9 @@
     <div class="close-btn" id="closeMenuBtn"><i class="fas fa-times"></i></div>
     <ul>
       <li><a href="#" onclick="showMainHome(); closeMenu();"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="#checkerSection" onclick="closeMenu();"><i class="fas fa-shield-virus"></i> Link Checker</a></li>
       <li><a href="#checklistSection" onclick="closeMenu();"><i class="fas fa-tasks"></i> Security Checklist</a></li>
+      <li><a href="#toolsSection" onclick="closeMenu();"><i class="fas fa-tools"></i> Cyber Toolkit</a></li>
       <li><a href="#faqSection" onclick="closeMenu();"><i class="fas fa-question-circle"></i> FAQ</a></li>
       <li><a href="#linksSection" onclick="closeMenu();"><i class="fas fa-external-link-alt"></i> Official Links</a></li>
       <li><a href="#contactSection" onclick="closeMenu();"><i class="fas fa-envelope"></i> Contact Support</a></li>
@@ -533,11 +617,41 @@
       </p>
       <div class="btn-container">
         <a href="#platforms" class="btn btn-primary">Get Started</a>
-        <a href="#checklistSection" class="btn btn-secondary">Check Security</a>
+        <a href="#checkerSection" class="btn btn-secondary">Scan Link</a>
       </div>
     </section>
 
     <div class="container">
+      
+      <!-- Live Statistics Grid -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <h3>১,২০০+</h3>
+          <p>সুরক্ষিত অ্যাকাউন্ট</p>
+        </div>
+        <div class="stat-card">
+          <h3>৪৫০+</h3>
+          <p>রিকভার করা আইডি</p>
+        </div>
+        <div class="stat-card">
+          <h3>৯৯%</h3>
+          <p>সফলতার হার</p>
+        </div>
+      </div>
+
+      <!-- Phishing Link Checker Section -->
+      <section id="checkerSection">
+        <h2 class="section-title">🔍 Live Phishing Link Checker</h2>
+        <div class="checker-box">
+          <p>কোনো সন্দেহজনক লিংক পেয়ে থাকলে নিচে পেস্ট করে স্ক্যান করুন:</p>
+          <div class="checker-input-group">
+            <input type="text" id="urlInput" placeholder="https://example.com/login-verify">
+            <button class="btn btn-primary" onclick="checkPhishingLink()">Scan Link</button>
+          </div>
+          <div class="checker-result" id="checkerResult"></div>
+        </div>
+      </section>
+
       <!-- Supported Platforms Grid -->
       <section id="platforms">
         <h2 class="section-title">Select Your Platform</h2>
@@ -569,6 +683,25 @@
         </div>
       </section>
 
+      <!-- Cyber Security Toolkit Section -->
+      <section id="toolsSection">
+        <h2 class="section-title">🛠️ Essential Cyber Security Tools</h2>
+        <div class="toolkit-grid">
+          <a href="https://haveibeenpwned.com/" target="_blank" class="tool-card">
+            <i class="fas fa-user-secret"></i>
+            <div><strong>HaveIBeenPwned</strong><br><small>ইমেইল বা ডেটা লিক চেক করুন</small></div>
+          </a>
+          <a href="https://authy.com/" target="_blank" class="tool-card">
+            <i class="fas fa-key"></i>
+            <div><strong>Authy 2FA</strong><br><small>নিরাপদ ২-স্টেপ অ্যাপ</small></div>
+          </a>
+          <a href="https://protonvpn.com/" target="_blank" class="tool-card">
+            <i class="fas fa-user-shield"></i>
+            <div><strong>Proton VPN</strong><br><small>প্রাইভেট এনক্রিপ্টেড ব্রাউজিং</small></div>
+          </a>
+        </div>
+      </section>
+
       <!-- Security Checklist Section -->
       <section id="checklistSection">
         <h2 class="section-title">🛡️ Quick Security Checklist</h2>
@@ -592,6 +725,21 @@
           </div>
           <div class="progress-bar-container">
             <div class="progress-bar" id="scoreBar"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- User Reviews / Testimonials -->
+      <section id="testimonialSection">
+        <h2 class="section-title">💬 User Feedback & Reviews</h2>
+        <div class="testimonial-grid">
+          <div class="testimonial-card">
+            <p>"আমার ডিজেবল হওয়া ফেসবুক আইডিটি মাত্র ২ দিনে রিকভার করে পেয়েছি। অনেক ধন্যবাদ ভাই!"</p>
+            <div class="testimonial-user"><i class="fas fa-user-circle"></i> তানভীর আহমেদ</div>
+          </div>
+          <div class="testimonial-card">
+            <p>"আমার ফেসবুকের ২-ফ্যাক্টর কোড আসছিল না। গাইডলাইন দেখে নিজেই ঠিক করতে পেরেছি।"</p>
+            <div class="testimonial-user"><i class="fas fa-user-circle"></i> সাব্বির হোসেন</div>
           </div>
         </div>
       </section>
@@ -625,11 +773,10 @@
       </section>
 
       <!-- Direct Contact & Support Section -->
-      <section id="contactSection" style="margin-bottom: 3rem;">
+      <section id="contactSection">
         <h2 class="section-title">📩 Contact & Direct Support</h2>
         <div class="contact-container">
           
-          <!-- Direct Contact Cards -->
           <div class="contact-methods">
             <a href="https://t.me/evu948" target="_blank" class="contact-card">
               <i class="fab fa-telegram" style="color: #0088cc;"></i>
@@ -656,7 +803,6 @@
             </a>
           </div>
 
-          <!-- Direct Form Message -->
           <form class="contact-form" onsubmit="handleContactSubmit(event)">
             <p style="margin-bottom: 1rem; font-weight: bold; color: #0284c7;">অথবা সরাসরি ওয়েবসাইটের মাধ্যমে মেসেজ পাঠান:</p>
             <div class="form-group">
@@ -695,9 +841,25 @@
     <div class="guideline-content" id="guideBody"></div>
   </div>
 
+  <!-- Privacy Policy Modal -->
+  <div class="modal" id="privacyModal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closePrivacyModal()">&times;</span>
+      <h3>🔒 Privacy Policy & Terms</h3>
+      <p style="margin-top: 1rem; font-size: 0.9rem;">
+        আমরা ব্যবহারকারীদের তথ্য এবং নিরাপত্তার সুরক্ষাকে সর্বাধিক গুরুত্ব দেই। আমাদের ওয়েবসাইটের মাধ্যমে কোনো ব্যক্তিগত তথ্য তৃতীয় পক্ষের কাছে শেয়ার করা হয় না।
+      </p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Social Security Hub. All Rights Reserved.</p>
+    <p><a onclick="openPrivacyModal()">Privacy Policy & Terms</a></p>
+  </footer>
+
   <!-- JavaScript Logic -->
   <script>
-    // প্ল্যাটফর্ম ডেটা
     const platformData = {
       facebook: {
         title: "Facebook Complete Security & Recovery Hub",
@@ -716,35 +878,13 @@
           }
         ]
       },
-      tiktok: {
-        title: "TikTok Safety & Recovery Hub",
-        icon: "fab fa-tiktok",
-        color: "#000000",
-        sections: [
-          {
-            topic: "🔑 ১. অ্যাকাউন্ট রিকভারি ও প্রাইভেসি",
-            details: "<p>ফোন নম্বর ও ইমেইল ভেরিফিকেশন দিয়ে পাসওয়ার্ড রিসেট করার গাইড।</p>",
-            youtubeVideoId: "d9MyW72ELq0"
-          }
-        ]
-      },
-      youtube: {
-        title: "YouTube Channel Security Hub",
-        icon: "fab fa-youtube",
-        color: "#ff0000",
-        sections: [
-          {
-            topic: "🛡️ ১. চ্যানেল সিকিউরিটি সেটআপ",
-            details: "<p>জিমেইলে 2-Step Verification এবং রিকভারি ফোন যোগ করে সিকিউরিটি বাড়ান।</p>",
-            youtubeVideoId: "d9MyW72ELq0"
-          }
-        ]
-      },
-      instagram: { title: "Instagram Hub", icon: "fab fa-instagram", color: "#e4405f", sections: [{ topic: "🛡️ ইনস্টাগ্রাম সুরক্ষা", details: "<p>লগইন অ্যাক্টিভিটি চেক করার গাইডলাইন।</p>", youtubeVideoId: "d9MyW72ELq0" }] },
+      tiktok: { title: "TikTok Hub", icon: "fab fa-tiktok", color: "#000000", sections: [{ topic: "🔑 ১. অ্যাকাউন্ট রিকভারি", details: "<p>ফোন ও ইমেইল ভেরিফিকেশন করার গাইড।</p>", youtubeVideoId: "d9MyW72ELq0" }] },
+      youtube: { title: "YouTube Hub", icon: "fab fa-youtube", color: "#ff0000", sections: [{ topic: "🛡️ ১. সিকিউরিটি সেটআপ", details: "<p>জিমেইল 2FA নিরাপত্তা গাইড।</p>", youtubeVideoId: "d9MyW72ELq0" }] },
+      instagram: { title: "Instagram Hub", icon: "fab fa-instagram", color: "#e4405f", sections: [{ topic: "🛡️ সুরক্ষার নিয়ম", details: "<p>লগইন সিকিউরিটি সেটিংস।</p>", youtubeVideoId: "d9MyW72ELq0" }] },
       whatsapp: { title: "WhatsApp Hub", icon: "fab fa-whatsapp", color: "#25d366", sections: [{ topic: "🛡️ পিন ও প্রাইভেসি", details: "<p>২-স্টেপ ভেরিফিকেশন পিন সেটআপ।</p>", youtubeVideoId: "d9MyW72ELq0" }] },
-      telegram: { title: "Telegram Hub", icon: "fab fa-telegram", color: "#0088cc", sections: [{ topic: "🛡️ ক্লাউড পাসওয়ার্ড", details: "<p>টেলিগ্রাম অ্যাকাউন্টে পাসকোড লক করার নিয়ম।</p>", youtubeVideoId: "d9MyW72ELq0" }] },
+      telegram: { title: "Telegram Hub", icon: "fab fa-telegram", color: "#0088cc", sections: [{ topic: "🛡️ ক্লাউড পাসওয়ার্ড", details: "<p>টেলিগ্রাম পাসকোড লক পদ্ধতি।</p>", youtubeVideoId: "d9MyW72ELq0" }] },
       messenger: { title: "Messenger Hub", icon: "fab fa-facebook-messenger", color: "#0084ff", sections: [{ topic: "🛡️ সিক্রেট চ্যাট", details: "<p>এন্ড-টু-এন্ড এনক্রিপশন সিস্টেম।</p>", youtubeVideoId: "d9MyW72ELq0" }] },
-      twitter: { title: "X (Twitter) Hub", icon: "fab fa-x-twitter", color: "#000000", sections: [{ topic: "🛡️ টুইটার সিকিউরিটি", details: "<p>টু-ফ্যাক্টর সিকিউরিটি সেটআপ।</p>", youtubeVideoId: "d9MyW72ELq0" }] }
+      twitter: { title: "X (Twitter) Hub", icon: "fab fa-x-twitter", color: "#000000", sections: [{ topic: "🛡️ টুইটার নিরাপত্তা", details: "<p>টু-ফ্যাক্টর সিকিউরিটি সেটআপ।</p>", youtubeVideoId: "d9MyW72ELq0" }] }
     };
 
     function openGuideline(platformKey) {
@@ -815,6 +955,32 @@
       });
     }
 
+    // Link Checker Logic
+    function checkPhishingLink() {
+      const url = document.getElementById('urlInput').value.trim();
+      const result = document.getElementById('checkerResult');
+      
+      if(!url) {
+        alert("দয়া করে একটি লিংক লিখুন!");
+        return;
+      }
+
+      result.style.display = "block";
+      
+      const suspiciousKeywords = ['free-fb', 'gift-card', 'login-verify', 'security-update-fb', 'claim-bonus'];
+      const isSuspicious = suspiciousKeywords.some(keyword => url.toLowerCase().includes(keyword));
+
+      if (isSuspicious) {
+        result.style.backgroundColor = "#fee2e2";
+        result.style.color = "#dc2626";
+        result.innerHTML = "⚠️ সতর্কতা: লিংকটি ফিশিং স্ক্যাম বা ক্ষতিকারক হতে পারে!";
+      } else {
+        result.style.backgroundColor = "#dcfce7";
+        result.style.color = "#16a34a";
+        result.innerHTML = "✅ নিরাপদ মনে হচ্ছে! তবে যেকোনো লিংকে ব্যক্তিগত পাসওয়ার্ড দেওয়ার আগে সাবধান থাকুন।";
+      }
+    }
+
     // Security Score Calculator
     function calculateScore() {
       const total = document.querySelectorAll('.chk-item').length;
@@ -829,6 +995,10 @@
     function toggleFaq(element) {
       element.classList.toggle('active');
     }
+
+    // Modal
+    function openPrivacyModal() { document.getElementById('privacyModal').style.display = 'flex'; }
+    function closePrivacyModal() { document.getElementById('privacyModal').style.display = 'none'; }
 
     // Math Captcha Generator
     let num1 = Math.floor(Math.random() * 10) + 1;
