@@ -129,10 +129,10 @@ nav a:hover{
 =========================== */
 
 .hero{
-    min-height:100vh;
+    min-height:auto;
     display:flex;
     align-items:center;
-    padding-top:100px;
+    padding:140px 0 80px;
 }
 
 .hero-container{
