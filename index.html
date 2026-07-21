@@ -1,176 +1,234 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security | Social Security Hub</title>
+  
+  <!-- Font Awesome CDN (আইকনের জন্য) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <style>
+    /* বেসিক সিএসএস স্টাইল */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: #f4f6f9;
+      color: #333;
+      line-height: 1.6;
+    }
 
-<title>Security | Social Security Hub</title>
+    /* নেভিগেশন বার */
+    header {
+      background-color: #0f172a;
+      color: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
 
-<meta name="description" content="Social Media Security, Privacy Guide, Account Recovery, Cyber Security">
+    header .logo {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #38bdf8;
+    }
 
-<link rel="stylesheet" href="style.css">
+    nav a {
+      color: #cbd5e1;
+      text-decoration: none;
+      margin-left: 1.2rem;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    nav a:hover {
+      color: #38bdf8;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    /* হিরো সেকশন */
+    .hero {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      color: #fff;
+    }
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    .hero h1 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
 
+    .hero p {
+      max-width: 600px;
+      margin: 0 auto 1.5rem auto;
+      color: #94a3b8;
+      font-size: 1.05rem;
+    }
+
+    .btn-container {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .btn {
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .btn-primary {
+      background-color: #0284c7;
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background-color: #0369a1;
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: #38bdf8;
+      border: 1px solid #38bdf8;
+    }
+
+    .btn-secondary:hover {
+      background-color: rgba(56, 189, 248, 0.1);
+    }
+
+    /* সোশ্যাল প্ল্যাটফর্ম সেকশন */
+    .platforms-section {
+      max-width: 900px;
+      margin: 2.5rem auto;
+      padding: 0 1rem;
+      text-align: center;
+    }
+
+    .platforms-section h2 {
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+      color: #0f172a;
+    }
+
+    .platform-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 1rem;
+    }
+
+    .platform-card {
+      background: #fff;
+      padding: 1.2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .platform-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .platform-card i {
+      font-size: 1.8rem;
+    }
+
+    /* আইকনের ব্র্যান্ড কালার */
+    .fa-facebook { color: #1877f2; }
+    .fa-tiktok { color: #000; }
+    .fa-youtube { color: #ff0000; }
+    .fa-instagram { color: #e4405f; }
+    .fa-whatsapp { color: #25d366; }
+    .fa-telegram { color: #0088cc; }
+    .fa-facebook-messenger { color: #0084ff; }
+    .fa-x-twitter { color: #000; }
+  </style>
 </head>
-
 <body>
 
-<header>
-  
-<section class="hero">
-<div class="container navbar">
-
-<a href="#" class="logo">
-
-<i class="fa-solid fa-shield-halved"></i>
-
-<span>Security</span>
-
-</a>
-
-<nav id="menu">
-
-<a href="#">Home</a>
-
-<a href="#">Facebook</a>
-
-<a href="#">TikTok</a>
-
-<a href="#">YouTube</a>
-
-<a href="#">Instagram</a>
-
-<a href="#">Contact</a>
-
-</nav>
-
-<div class="actions">
-
-<button id="searchBtn">
-
-<i class="fa-solid fa-magnifying-glass"></i>
-
-</button>
-
-<button id="themeBtn">
-
-<i class="fa-solid fa-moon"></i>
-
-</button>
-
-<button id="menuBtn">
-
-<i class="fa-solid fa-bars"></i>
-
-</button>
-
-</div>
-
-</div>
-
-</header>
-
-<div class="container hero-container">
-
-<div class="hero-text">
-
-
-
-<div class="security-title">
-🛡️ Security
-</div>
-
-<h1>
-Protect Your Digital Life
-</h1>
-
-
-<div class="platform-grid">
-
-
-<div class="platform-card">
-<img src="images/facebook.png" alt="Facebook">
-<h3>Facebook</h3>
-</div>
-
-
-<div class="platform-card">
-<img src="images/tiktok.png" alt="TikTok">
-<h3>TikTok</h3>
-</div>
-
-
-<div class="platform-card">
-<img src="images/youtube.png" alt="YouTube">
-<h3>YouTube</h3>
-</div>
-
-
-<div class="platform-card">
-<img src="images/instagram.png" alt="Instagram">
-<h3>Instagram</h3>
-</div>
-
-
-<div class="platform-card">
-<img src="images/whatsapp.png" alt="WhatsApp">
-<h3>WhatsApp</h3>
-</div>
-
-
-<div class="platform-card">
-<img src="images/telegram.png" alt="Telegram">
-<h3>Telegram</h3>
-</div>
-
-
-<div class="platform-card">
-<img src="images/messenger.png" alt="Messenger">
-<h3>Messenger</h3>
-</div>
-
-
-<div class="platform-card">
-<img src="images/x.png" alt="X">
-<h3>X (Twitter)</h3>
-</div>
-
-
-</div>
-
-
-<p>
-
-Learn Facebook, TikTok, YouTube, Instagram,
-Privacy, Account Recovery,
-Password Security,
-Cyber Safety and much more.
-
-</p>
-
-
-<div class="hero-buttons">
-
-<a href="#" class="btn primary">
-Get Started
-</a>
-
-<a href="#" class="btn secondary">
-Learn More
-</a>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
+  <!-- Header Navigation -->
+  <header>
+    <div class="logo">
+      <i class="fas fa-shield-alt"></i> Social Security Hub
+    </div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Facebook</a>
+      <a href="#">TikTok</a>
+      <a href="#">YouTube</a>
+      <a href="#">Instagram</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>🛡️ Protect Your Digital Life</h1>
+    <p>
+      Learn Facebook, TikTok, YouTube, Instagram, Privacy, Account Recovery, Password Security, Cyber Safety and much more.
+    </p>
+    <div class="btn-container">
+      <a href="#" class="btn btn-primary">Get Started</a>
+      <a href="#" class="btn btn-secondary">Learn More</a>
+    </div>
+  </section>
+
+  <!-- Supported Platforms Grid -->
+  <section class="platforms-section">
+    <h2>Select Your Platform</h2>
+    <div class="platform-grid">
+      <a href="#" class="platform-card">
+        <i class="fab fa-facebook"></i>
+        <span>Facebook</span>
+      </a>
+      <a href="#" class="platform-card">
+        <i class="fab fa-tiktok"></i>
+        <span>TikTok</span>
+      </a>
+      <a href="#" class="platform-card">
+        <i class="fab fa-youtube"></i>
+        <span>YouTube</span>
+      </a>
+      <a href="#" class="platform-card">
+        <i class="fab fa-instagram"></i>
+        <span>Instagram</span>
+      </a>
+      <a href="#" class="platform-card">
+        <i class="fab fa-whatsapp"></i>
+        <span>WhatsApp</span>
+      </a>
+      <a href="#" class="platform-card">
+        <i class="fab fa-telegram"></i>
+        <span>Telegram</span>
+      </a>
+      <a href="#" class="platform-card">
+        <i class="fab fa-facebook-messenger"></i>
+        <span>Messenger</span>
+      </a>
+      <a href="#" class="platform-card">
+        <i class="fab fa-x-twitter"></i>
+        <span>X (Twitter)</span>
+      </a>
+    </div>
+  </section>
+
+</body>
+</html>
