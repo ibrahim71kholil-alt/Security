@@ -348,3 +348,19 @@ nav a:hover{
 }
 
 }
+.security-title{
+    font-size:22px;
+    font-weight:700;
+    margin-bottom:20px;
+    color:white;
+}
+
+.hero-text h1{
+    font-size:48px;
+    font-weight:800;
+    color:white;
+}
+
+.hero-text h1 span{
+    color:inherit;
+}
