@@ -249,3 +249,102 @@ nav a:hover{
     border-radius:15px;
     border:1px solid rgba(255,255,255,.1);
 }
+/* Platform Cards */
+
+.platform-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+    margin:40px auto;
+    max-width:700px;
+}
+
+
+.platform-card{
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:20px;
+    padding:25px;
+    text-align:center;
+    transition:0.3s ease;
+    cursor:pointer;
+}
+
+
+.platform-card img{
+    width:55px;
+    height:55px;
+    object-fit:contain;
+    margin-bottom:15px;
+}
+
+
+.platform-card h3{
+    color:white;
+    font-size:20px;
+    margin:0;
+}
+
+
+.platform-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 35px rgba(0,0,0,0.3);
+}
+
+
+/* Hero Text Alignment */
+
+.hero-text{
+    text-align:center;
+}
+
+
+.hero-text h1{
+    font-size:48px;
+}
+
+
+.hero-text p{
+    max-width:650px;
+    margin:30px auto;
+    line-height:1.8;
+}
+
+
+/* Buttons Bottom */
+
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    margin-top:30px;
+}
+
+
+/* Mobile Responsive */
+
+@media(max-width:600px){
+
+.platform-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+
+
+.platform-card{
+    padding:18px 10px;
+}
+
+
+.platform-card img{
+    width:40px;
+    height:40px;
+}
+
+
+.hero-text h1{
+    font-size:34px;
+}
+
+}
