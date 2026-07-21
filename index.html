@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Security | Social Security Hub</title>
   
-  <!-- Font Awesome CDN (আইকনের জন্য) -->
+  <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <style>
@@ -42,7 +42,21 @@
       line-height: 1.6;
     }
 
-    /* হেডার সেকশন */
+    /* Scam Alert Banner */
+    .alert-banner {
+      background-color: #ef4444;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      text-align: center;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    /* Header */
     header {
       background-color: var(--header-bg);
       color: #fff;
@@ -78,14 +92,13 @@
       color: #cbd5e1;
       font-size: 1.2rem;
       cursor: pointer;
-      transition: color 0.3s;
     }
 
     .action-btn:hover {
       color: #38bdf8;
     }
 
-    /* সার্চ বার */
+    /* Search Box */
     .search-box-container {
       display: none;
       background-color: var(--card-bg);
@@ -110,7 +123,7 @@
       color: var(--text-color);
     }
 
-    /* সাইডবার মেনু */
+    /* Side Menu */
     .side-menu {
       position: fixed;
       top: 0;
@@ -158,7 +171,7 @@
       color: #38bdf8;
     }
 
-    /* হিরো সেকশন */
+    /* Hero Section */
     .hero {
       text-align: center;
       padding: 3rem 1rem;
@@ -193,29 +206,21 @@
       text-decoration: none;
     }
 
-    .btn-primary {
-      background-color: #0284c7;
-      color: #fff;
-    }
+    .btn-primary { background-color: #0284c7; color: #fff; }
+    .btn-secondary { background-color: transparent; color: #38bdf8; border: 1px solid #38bdf8; }
 
-    .btn-secondary {
-      background-color: transparent;
-      color: #38bdf8;
-      border: 1px solid #38bdf8;
-    }
-
-    /* সোশ্যাল প্ল্যাটফর্ম গ্রিড */
-    .platforms-section {
-      max-width: 900px;
-      margin: 2.5rem auto;
-      padding: 0 1rem;
+    /* Layout & Cards */
+    .section-title {
+      margin: 2.5rem 0 1.5rem 0;
+      font-size: 1.4rem;
+      color: var(--title-color);
       text-align: center;
     }
 
-    .platforms-section h2 {
-      margin-bottom: 1.5rem;
-      font-size: 1.4rem;
-      color: var(--title-color);
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1rem;
     }
 
     .platform-grid {
@@ -236,19 +241,13 @@
       text-decoration: none;
       color: var(--text-color);
       font-weight: 600;
-      transition: transform 0.2s;
       cursor: pointer;
     }
 
-    .platform-card:hover {
-      transform: translateY(-3px);
-    }
+    .platform-card:hover { transform: translateY(-3px); }
+    .platform-card i { font-size: 1.8rem; }
 
-    .platform-card i {
-      font-size: 1.8rem;
-    }
-
-    /* ব্র্যান্ড কালার */
+    /* Brand Colors */
     .fa-facebook { color: #1877f2; }
     .fa-tiktok { color: #000; }
     body.dark-mode .fa-tiktok { color: #fff; }
@@ -260,7 +259,170 @@
     .fa-x-twitter { color: #000; }
     body.dark-mode .fa-x-twitter { color: #fff; }
 
-    /* গাইডলাইন পেজ ভিউ */
+    /* Security Checklist Section */
+    .checklist-box {
+      background-color: var(--card-bg);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .checklist-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 0.8rem;
+      font-size: 1rem;
+    }
+
+    .progress-bar-container {
+      background-color: var(--border-color);
+      border-radius: 10px;
+      height: 15px;
+      width: 100%;
+      margin-top: 1rem;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      background-color: #22c55e;
+      height: 100%;
+      width: 0%;
+      transition: width 0.3s;
+    }
+
+    /* FAQ Section */
+    .faq-item {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      margin-bottom: 0.8rem;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      padding: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 1rem;
+      border-top: 1px solid var(--border-color);
+      background-color: var(--bg-color);
+      font-size: 0.95rem;
+    }
+
+    .faq-item.active .faq-answer { display: block; }
+
+    /* Quick Links */
+    .quick-links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .quick-link-btn {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      padding: 0.8rem;
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--text-color);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+    }
+
+    .quick-link-btn:hover { background-color: #0284c7; color: #fff; }
+
+    /* Contact Section Style */
+    .contact-container {
+      background-color: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .contact-methods {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-card {
+      background-color: var(--bg-color);
+      border: 1px solid var(--border-color);
+      padding: 1rem;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: var(--text-color);
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-2px);
+      border-color: #0284c7;
+    }
+
+    .contact-card i {
+      font-size: 2rem;
+    }
+
+    .contact-card .details h4 {
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-card .details p {
+      font-size: 0.85rem;
+      color: #64748b;
+      word-break: break-all;
+    }
+
+    body.dark-mode .contact-card .details p {
+      color: #94a3b8;
+    }
+
+    /* Contact Form */
+    .contact-form {
+      margin-top: 1.5rem;
+      border-top: 1px solid var(--border-color);
+      padding-top: 1.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+    }
+
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 0.7rem;
+      border: 1px solid var(--border-color);
+      border-radius: 5px;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      outline: none;
+    }
+
+    /* Guideline Page View */
     .guideline-page {
       display: none;
       max-width: 850px;
@@ -271,9 +433,7 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
-    .guideline-page.active {
-      display: block;
-    }
+    .guideline-page.active { display: block; }
 
     .back-btn {
       display: inline-flex;
@@ -298,11 +458,6 @@
       padding-bottom: 1rem;
     }
 
-    .guideline-header i {
-      font-size: 2.5rem;
-    }
-
-    /* বিষয়ভিত্তিক সেকশন বক্সেস */
     .topic-card {
       background-color: var(--bg-color);
       border: 1px solid var(--border-color);
@@ -311,28 +466,11 @@
       margin-bottom: 1.5rem;
     }
 
-    .topic-card h3 {
-      color: #0284c7;
-      margin-bottom: 0.8rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 1.2rem;
-    }
-
-    .topic-card p, .topic-card ul {
-      margin-bottom: 0.8rem;
-      font-size: 0.95rem;
-    }
-
-    .topic-card ul {
-      margin-left: 1.2rem;
-    }
-
-    /* ভিডিও বক্স কন্টেইনার */
+    .topic-card h3 { color: #0284c7; margin-bottom: 0.8rem; }
+    
     .video-container {
       position: relative;
-      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+      padding-bottom: 56.25%;
       height: 0;
       overflow: hidden;
       border-radius: 8px;
@@ -342,17 +480,20 @@
 
     .video-container iframe {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
+      top: 0; left: 0;
+      width: 100%; height: 100%; border: 0;
     }
   </style>
 </head>
 <body>
 
-  <!-- Header Section -->
+  <!-- Scam Alert Banner -->
+  <div class="alert-banner">
+    <i class="fas fa-exclamation-triangle"></i>
+    <span>সতর্কতা: যেকোনো অপরিচিত লিংক থেকে আইডি ফ্রিতে পাসওয়ার্ড পরিবর্তন বা ভেরিফাই করার বার্তা থেকে সাবধান থাকুন!</span>
+  </div>
+
+  <!-- Header -->
   <header>
     <div class="logo" onclick="showMainHome()">
       🛡️ Social Security Hub
@@ -375,9 +516,10 @@
     <div class="close-btn" id="closeMenuBtn"><i class="fas fa-times"></i></div>
     <ul>
       <li><a href="#" onclick="showMainHome(); closeMenu();"><i class="fas fa-home"></i> Home</a></li>
-      <li><a href="#" onclick="closeMenu();"><i class="fas fa-user-shield"></i> Cyber Safety</a></li>
-      <li><a href="#" onclick="closeMenu();"><i class="fas fa-info-circle"></i> About Us</a></li>
-      <li><a href="#" onclick="closeMenu();"><i class="fas fa-envelope"></i> Contact</a></li>
+      <li><a href="#checklistSection" onclick="closeMenu();"><i class="fas fa-tasks"></i> Security Checklist</a></li>
+      <li><a href="#faqSection" onclick="closeMenu();"><i class="fas fa-question-circle"></i> FAQ</a></li>
+      <li><a href="#linksSection" onclick="closeMenu();"><i class="fas fa-external-link-alt"></i> Official Links</a></li>
+      <li><a href="#contactSection" onclick="closeMenu();"><i class="fas fa-envelope"></i> Contact Support</a></li>
     </ul>
   </div>
 
@@ -391,48 +533,154 @@
       </p>
       <div class="btn-container">
         <a href="#platforms" class="btn btn-primary">Get Started</a>
-        <a href="#" class="btn btn-secondary">Learn More</a>
+        <a href="#checklistSection" class="btn btn-secondary">Check Security</a>
       </div>
     </section>
 
-    <!-- Supported Platforms Grid -->
-    <section class="platforms-section" id="platforms">
-      <h2>Select Your Platform</h2>
-      <div class="platform-grid" id="platformGrid">
-        <div class="platform-card" onclick="openGuideline('facebook')">
-          <i class="fab fa-facebook"></i>
-          <span>Facebook</span>
+    <div class="container">
+      <!-- Supported Platforms Grid -->
+      <section id="platforms">
+        <h2 class="section-title">Select Your Platform</h2>
+        <div class="platform-grid" id="platformGrid">
+          <div class="platform-card" onclick="openGuideline('facebook')">
+            <i class="fab fa-facebook"></i><span>Facebook</span>
+          </div>
+          <div class="platform-card" onclick="openGuideline('tiktok')">
+            <i class="fab fa-tiktok"></i><span>TikTok</span>
+          </div>
+          <div class="platform-card" onclick="openGuideline('youtube')">
+            <i class="fab fa-youtube"></i><span>YouTube</span>
+          </div>
+          <div class="platform-card" onclick="openGuideline('instagram')">
+            <i class="fab fa-instagram"></i><span>Instagram</span>
+          </div>
+          <div class="platform-card" onclick="openGuideline('whatsapp')">
+            <i class="fab fa-whatsapp"></i><span>WhatsApp</span>
+          </div>
+          <div class="platform-card" onclick="openGuideline('telegram')">
+            <i class="fab fa-telegram"></i><span>Telegram</span>
+          </div>
+          <div class="platform-card" onclick="openGuideline('messenger')">
+            <i class="fab fa-facebook-messenger"></i><span>Messenger</span>
+          </div>
+          <div class="platform-card" onclick="openGuideline('twitter')">
+            <i class="fab fa-x-twitter"></i><span>X (Twitter)</span>
+          </div>
         </div>
-        <div class="platform-card" onclick="openGuideline('tiktok')">
-          <i class="fab fa-tiktok"></i>
-          <span>TikTok</span>
+      </section>
+
+      <!-- Security Checklist Section -->
+      <section id="checklistSection">
+        <h2 class="section-title">🛡️ Quick Security Checklist</h2>
+        <div class="checklist-box">
+          <p style="margin-bottom: 1rem;">আপনার সোশ্যাল মিডিয়া অ্যাকাউন্ট কতটা সুরক্ষিত? টিক চিহ্ন দিয়ে চেক করুন:</p>
+          <div class="checklist-item">
+            <input type="checkbox" class="chk-item" onchange="calculateScore()"> 2-Factor Authentication (2FA) চালু করেছি।
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" class="chk-item" onchange="calculateScore()"> পাসওয়ার্ডে বড় হাতের অক্ষর, সংখ্যা ও স্পেশাল ক্যারেক্টার আছে।
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" class="chk-item" onchange="calculateScore()"> ইমেইল এবং রিকভারি ফোন নম্বর সম্পূর্ণ আপডেট আছে।
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" class="chk-item" onchange="calculateScore()"> কোনো সন্দেহজনক বা থার্ড-পার্টি অ্যাপের এক্সেস বন্ধ রেখেছি।
+          </div>
+
+          <div style="margin-top: 1rem; font-weight: bold;">
+            আপনার সিকিউরিটি স্কোর: <span id="scoreTxt">0%</span>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar" id="scoreBar"></div>
+          </div>
         </div>
-        <div class="platform-card" onclick="openGuideline('youtube')">
-          <i class="fab fa-youtube"></i>
-          <span>YouTube</span>
+      </section>
+
+      <!-- FAQ Section -->
+      <section id="faqSection">
+        <h2 class="section-title">❓ Frequently Asked Questions (FAQ)</h2>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-question">আইডি ডিজেবল হলে রিকভার হতে কতদিন সময় লাগে? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-answer">সাধারণত অফিসিয়াল আপিল ফর্ম সাবমিট করার ২৪ থেকে ৭২ ঘণ্টার মধ্যে রেসপন্স পাওয়া যায়। তবে ছুটির দিনে কিছুটা সময় লাগতে পারে।</div>
         </div>
-        <div class="platform-card" onclick="openGuideline('instagram')">
-          <i class="fab fa-instagram"></i>
-          <span>Instagram</span>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-question">NID কার্ডের তথ্যের সাথে ফেসবুক আইডির মিল না থাকলে করণীয় কী? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-answer">যদি আপনার আইডির নাম NID এর সাথে না মিলে, তবে রিকভারির সুযোগ খুবই কম থাকে। তাই সবসময় আইডিতে নিজের আসল নাম ব্যবহার করা উচিত।</div>
         </div>
-        <div class="platform-card" onclick="openGuideline('whatsapp')">
-          <i class="fab fa-whatsapp"></i>
-          <span>WhatsApp</span>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-question">2-Factor Authentication টেক্সট মেসেজ না আসলে কী করব? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-answer">মোবাইল মেসেজের বদলে Google Authenticator বা 2FA অ্যাপ ব্যবহার করা সবচেয়ে নিরাপদ, যা মেসেজ ছাড়াই কোড জেনারেট করতে পারে।</div>
         </div>
-        <div class="platform-card" onclick="openGuideline('telegram')">
-          <i class="fab fa-telegram"></i>
-          <span>Telegram</span>
+      </section>
+
+      <!-- Official Links Section -->
+      <section id="linksSection">
+        <h2 class="section-title">🔗 Official Help Links</h2>
+        <div class="quick-links-grid">
+          <a href="https://www.facebook.com/hacked" target="_blank" class="quick-link-btn"><i class="fab fa-facebook"></i> FB Hacked Recovery</a>
+          <a href="https://www.facebook.com/help/contact/260749603972907" target="_blank" class="quick-link-btn"><i class="fas fa-id-card"></i> FB Identity Verification</a>
+          <a href="https://support.google.com/youtube" target="_blank" class="quick-link-btn"><i class="fab fa-youtube"></i> YouTube Support</a>
+          <a href="https://support.tiktok.com" target="_blank" class="quick-link-btn"><i class="fab fa-tiktok"></i> TikTok Center</a>
         </div>
-        <div class="platform-card" onclick="openGuideline('messenger')">
-          <i class="fab fa-facebook-messenger"></i>
-          <span>Messenger</span>
+      </section>
+
+      <!-- Direct Contact & Support Section -->
+      <section id="contactSection" style="margin-bottom: 3rem;">
+        <h2 class="section-title">📩 Contact & Direct Support</h2>
+        <div class="contact-container">
+          
+          <!-- Direct Contact Cards -->
+          <div class="contact-methods">
+            <a href="https://t.me/evu948" target="_blank" class="contact-card">
+              <i class="fab fa-telegram" style="color: #0088cc;"></i>
+              <div class="details">
+                <h4>Telegram</h4>
+                <p>t.me/evu948</p>
+              </div>
+            </a>
+
+            <a href="https://www.facebook.com/share/1CzeyKLWAX/" target="_blank" class="contact-card">
+              <i class="fab fa-facebook" style="color: #1877f2;"></i>
+              <div class="details">
+                <h4>Facebook</h4>
+                <p>Connect on Facebook</p>
+              </div>
+            </a>
+
+            <a href="mailto:itsfaruk760@gmail.com" class="contact-card">
+              <i class="fas fa-envelope" style="color: #ea4335;"></i>
+              <div class="details">
+                <h4>Email</h4>
+                <p>itsfaruk760@gmail.com</p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Direct Form Message -->
+          <form class="contact-form" onsubmit="handleContactSubmit(event)">
+            <p style="margin-bottom: 1rem; font-weight: bold; color: #0284c7;">অথবা সরাসরি ওয়েবসাইটের মাধ্যমে মেসেজ পাঠান:</p>
+            <div class="form-group">
+              <label>আপনার নাম:</label>
+              <input type="text" required placeholder="আপনার নাম লিখুন">
+            </div>
+            <div class="form-group">
+              <label>ইমেইল ঠিকানা:</label>
+              <input type="email" required placeholder="example@mail.com">
+            </div>
+            <div class="form-group">
+              <label>সমস্যার বিস্তারিত:</label>
+              <textarea rows="4" required placeholder="আপনার সমস্যাটি বিস্তারিত লিখুন..."></textarea>
+            </div>
+            <div class="form-group">
+              <label><span id="mathQuestion"></span> (ক্যাপচা সমাধান করুন):</label>
+              <input type="number" id="captchaAnswer" required placeholder="উত্তর">
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">মেসেজ পাঠান</button>
+          </form>
+
         </div>
-        <div class="platform-card" onclick="openGuideline('twitter')">
-          <i class="fab fa-x-twitter"></i>
-          <span>X (Twitter)</span>
-        </div>
-      </div>
-    </section>
+      </section>
+    </div>
   </div>
 
   <!-- Dynamic Guideline Page View -->
@@ -444,14 +692,12 @@
       <h2 id="guideTitle">Platform Guidelines</h2>
     </div>
 
-    <div class="guideline-content" id="guideBody">
-      <!-- JavaScript এর মাধ্যমে বিষয়ভিত্তিক সেকশন ও ভিডিও লোড হবে -->
-    </div>
+    <div class="guideline-content" id="guideBody"></div>
   </div>
 
   <!-- JavaScript Logic -->
   <script>
-    // বিষয়ভিত্তিক গাইডলাইন ও ভিডিও কন্টেন্ট ডেটা
+    // প্ল্যাটফর্ম ডেটা
     const platformData = {
       facebook: {
         title: "Facebook Complete Security & Recovery Hub",
@@ -460,135 +706,47 @@
         sections: [
           {
             topic: "🔑 ১. ফেসবুক আইডি রিকভারি (Account Recovery)",
-            details: `
-              <p>পাসওয়ার্ড ভুলে গেলে বা পাসওয়ার্ড পরিবর্তন হয়ে গেলে রিকভার করার নিয়ম:</p>
-              <ul>
-                <li>ফেসবুক লগইন পেজে গিয়ে <b>Forgot Password</b> অপশনে ক্লিক করুন।</li>
-                <li>আপনার সংযুক্ত ইমেইল অথবা ফোন নম্বর প্রদান করুন।</li>
-                <li>ইমেইল/এসএমএস এ আসা ৬ ডিজিটের OTP কোডটি বসিয়ে পাসওয়ার্ড রিসেট করুন।</li>
-                <li>অ্যাক্সেস হারিয়ে গেলে <b>facebook.com/hacked</b> লিংকে গিয়ে অফিসিয়াল রিকভারি প্রসেস অনুসরণ করুন।</li>
-              </ul>
-            `,
-            youtubeVideoId: "d9MyW72ELq0" // এখানে ইউটিউব ভিডিওর ID বসাবেন
+            details: "<p>পাসওয়ার্ড ভুলে গেলে বা অ্যাকাউন্ট হ্যাক হলে Forgot Password অথবা <b>facebook.com/hacked</b> লিংকে গিয়ে রিকভারি শুরু করুন।</p>",
+            youtubeVideoId: "d9MyW72ELq0"
           },
           {
-            topic: "🚫 ২. ডিজেবল ও সাসপেন্ড আইডি সমাধান (Disabled & Suspended ID Recovery)",
-            details: `
-              <p>কমিউনিটি স্ট্যান্ডার্ড ভায়োলেশনের কারণে আইডি ডিজেবল বা সাসপেন্ড হলে করণীয়:</p>
-              <ul>
-                <li>অফিসিয়াল <b>Identity Verification Appeal Form</b> পুরণ করুন।</li>
-                <li>আপনার আসল সরকারি পরিচয়পত্র (NID, Passport, or Driving License) এর পরিষ্কার ছবি সাবমিট করুন।</li>
-                <li>আইডির নাম ও জন্মতারিখের সাথে আপনার পরিচয়পত্রের তথ্য ১০০% মিল থাকতে হবে।</li>
-              </ul>
-            `,
-            youtubeVideoId: "d9MyW72ELq0" // ইউটিউব ভিডিওর ID
-          },
-          {
-            topic: "🛡️ ৩. ফেসবুক সিকিউরিটি ও অ্যান্টি-হ্যাকিং সেটআপ (Anti-Hacking Setup)",
-            details: `
-              <p>আইডি হ্যাকিং থেকে চিরতরে নিরাপদ রাখার সিকিউরিটি সেটআপ:</p>
-              <ul>
-                <li><b>2-Factor Authentication (2FA)</b> অন করুন (Google Authenticator App ব্যবহার করা সবচেয়ে নিরাপদ)।</li>
-                <li><b>Unrecognized Logins Alert</b> অন রাখুন যাতে কেউ লগইন করার চেষ্টা করলেই নোটিফিকেশন পান।</li>
-                <li>সন্দেহজনক লিংক (Phishing Links) এ ক্লিক করা থেকে বিরত থাকুন।</li>
-              </ul>
-            `,
-            youtubeVideoId: "d9MyW72ELq0" // ইউটিউব ভিডিওর ID
+            topic: "🚫 ২. ডিজেবল ও সাসপেন্ড আইডি সমাধান",
+            details: "<p>কমিউনিটি ভায়োলেশনের কারণে আইডি ডিজেবল হলে আপনার আসল NID সাবমিট করে আপিল করুন।</p>",
+            youtubeVideoId: "d9MyW72ELq0"
           }
         ]
       },
       tiktok: {
-        title: "TikTok Complete Security Hub",
+        title: "TikTok Safety & Recovery Hub",
         icon: "fab fa-tiktok",
         color: "#000000",
         sections: [
           {
-            topic: "🔑 ১. টিকটক অ্যাকাউন্ট রিকভারি",
-            details: "<p>ফোন নম্বর বা ইমেইল দিয়ে সহজে টিকটক আইডি রিকভার করার গাইডলাইন।</p>",
-            youtubeVideoId: "d9MyW72ELq0"
-          },
-          {
-            topic: "🛡️ ২. টিকটক সিকিউরিটি ও প্রাইভেসি সেটআপ",
-            details: "<p>2-Step Verification অন রাখা ও প্রাইভেট অ্যাকাউন্ট সেটিংস গাইড।</p>",
+            topic: "🔑 ১. অ্যাকাউন্ট রিকভারি ও প্রাইভেসি",
+            details: "<p>ফোন নম্বর ও ইমেইল ভেরিফিকেশন দিয়ে পাসওয়ার্ড রিসেট করার গাইড।</p>",
             youtubeVideoId: "d9MyW72ELq0"
           }
         ]
       },
       youtube: {
-        title: "YouTube Channel Protection Hub",
+        title: "YouTube Channel Security Hub",
         icon: "fab fa-youtube",
         color: "#ff0000",
         sections: [
           {
-            topic: "🛡️ ১. ইউটিউব চ্যানেল হ্যাকিং প্রটেকশন",
-            details: "<p>জিমেইল টু-স্টেপ ভেরিফিকেশন ও থার্ড-পার্টি পারমিশন রিমুভ করার পদ্ধতি।</p>",
+            topic: "🛡️ ১. চ্যানেল সিকিউরিটি সেটআপ",
+            details: "<p>জিমেইলে 2-Step Verification এবং রিকভারি ফোন যোগ করে সিকিউরিটি বাড়ান।</p>",
             youtubeVideoId: "d9MyW72ELq0"
           }
         ]
       },
-      instagram: {
-        title: "Instagram Safety Hub",
-        icon: "fab fa-instagram",
-        color: "#e4405f",
-        sections: [
-          {
-            topic: "🔑 ১. ইনস্টাগ্রাম অ্যাকাউন্ট রিকভারি ও সিকিউরিটি",
-            details: "<p>সিকিউরিটি চেকআপ ও লগইন অ্যাক্টিভিটি চেক করার গাইড।</p>",
-            youtubeVideoId: "d9MyW72ELq0"
-          }
-        ]
-      },
-      whatsapp: {
-        title: "WhatsApp Protection Hub",
-        icon: "fab fa-whatsapp",
-        color: "#25d366",
-        sections: [
-          {
-            topic: "🛡️ ১. হোয়াটসঅ্যাপ টু-স্টেপ পিন ও প্রাইভেসি",
-            details: "<p>৬ ডিজিটের টু-স্টেপ পিন সেটআপের নিয়ম।</p>",
-            youtubeVideoId: "d9MyW72ELq0"
-          }
-        ]
-      },
-      telegram: {
-        title: "Telegram Security Hub",
-        icon: "fab fa-telegram",
-        color: "#0088cc",
-        sections: [
-          {
-            topic: "🛡️ ১. টেলিগ্রাম ক্লাউড পাসওয়ার্ড ও সিকিউরিটি",
-            details: "<p>ফোন নম্বর হাইড রাখা ও পাসকোড সেট করার গাইড।</p>",
-            youtubeVideoId: "d9MyW72ELq0"
-          }
-        ]
-      },
-      messenger: {
-        title: "Messenger Protection Hub",
-        icon: "fab fa-facebook-messenger",
-        color: "#0084ff",
-        sections: [
-          {
-            topic: "🛡️ ১. এন্ড-টু-এন্ড এনক্রিপশন ও সিক্রেট চ্যাট",
-            details: "<p>মেসেঞ্জার নিরাপত্তা এবং চ্যাট ফিল্টারিং গাইড।</p>",
-            youtubeVideoId: "d9MyW72ELq0"
-          }
-        ]
-      },
-      twitter: {
-        title: "X (Twitter) Security Hub",
-        icon: "fab fa-x-twitter",
-        color: "#000000",
-        sections: [
-          {
-            topic: "🛡️ ১. টুইটার টু-ফ্যাক্টর সিকিউরিটি",
-            details: "<p>পোস্ট প্রোটেক্ট করা ও অ্যাকাউন্ট সুরক্ষার নিয়ম।</p>",
-            youtubeVideoId: "d9MyW72ELq0"
-          }
-        ]
-      }
+      instagram: { title: "Instagram Hub", icon: "fab fa-instagram", color: "#e4405f", sections: [{ topic: "🛡️ ইনস্টাগ্রাম সুরক্ষা", details: "<p>লগইন অ্যাক্টিভিটি চেক করার গাইডলাইন।</p>", youtubeVideoId: "d9MyW72ELq0" }] },
+      whatsapp: { title: "WhatsApp Hub", icon: "fab fa-whatsapp", color: "#25d366", sections: [{ topic: "🛡️ পিন ও প্রাইভেসি", details: "<p>২-স্টেপ ভেরিফিকেশন পিন সেটআপ।</p>", youtubeVideoId: "d9MyW72ELq0" }] },
+      telegram: { title: "Telegram Hub", icon: "fab fa-telegram", color: "#0088cc", sections: [{ topic: "🛡️ ক্লাউড পাসওয়ার্ড", details: "<p>টেলিগ্রাম অ্যাকাউন্টে পাসকোড লক করার নিয়ম।</p>", youtubeVideoId: "d9MyW72ELq0" }] },
+      messenger: { title: "Messenger Hub", icon: "fab fa-facebook-messenger", color: "#0084ff", sections: [{ topic: "🛡️ সিক্রেট চ্যাট", details: "<p>এন্ড-টু-এন্ড এনক্রিপশন সিস্টেম।</p>", youtubeVideoId: "d9MyW72ELq0" }] },
+      twitter: { title: "X (Twitter) Hub", icon: "fab fa-x-twitter", color: "#000000", sections: [{ topic: "🛡️ টুইটার সিকিউরিটি", details: "<p>টু-ফ্যাক্টর সিকিউরিটি সেটআপ।</p>", youtubeVideoId: "d9MyW72ELq0" }] }
     };
 
-    // গাইডলাইন পেজ ওপেন করার ফাংশন
     function openGuideline(platformKey) {
       const data = platformData[platformKey];
       if (!data) return;
@@ -602,7 +760,6 @@
       guideIcon.style.color = data.color;
       document.getElementById('guideTitle').innerText = data.title;
       
-      // বিষয়ভিত্তিক কন্টেন্ট ও ইউটিউব ভিডিও রেন্ডারিং
       let bodyHTML = "";
       data.sections.forEach(sec => {
         bodyHTML += `
@@ -619,60 +776,75 @@
       });
 
       document.getElementById('guideBody').innerHTML = bodyHTML;
-      
       guidePage.classList.add('active');
       window.scrollTo(0, 0);
     }
 
-    // হোম পেজে ফিরে যাওয়ার ফাংশন
     function showMainHome() {
       document.getElementById('guidelinePage').classList.remove('active');
       document.getElementById('mainContainer').style.display = 'block';
       window.scrollTo(0, 0);
     }
 
-    // ডার্ক মোড টগল
+    // Theme Toggle
     const themeBtn = document.getElementById('themeBtn');
     const themeIcon = document.getElementById('themeIcon');
-
     themeBtn.addEventListener('click', () => {
       document.body.classList.toggle('dark-mode');
-      if (document.body.classList.contains('dark-mode')) {
-        themeIcon.classList.remove('fa-moon');
-        themeIcon.classList.add('fa-sun');
-      } else {
-        themeIcon.classList.remove('fa-sun');
-        themeIcon.classList.add('fa-moon');
-      }
+      themeIcon.className = document.body.classList.contains('dark-mode') ? 'fas fa-sun' : 'fas fa-moon';
     });
 
-    // স্লাইডিং মেনু
+    // Side Menu
     const menuBtn = document.getElementById('menuBtn');
     const closeMenuBtn = document.getElementById('closeMenuBtn');
     const sideMenu = document.getElementById('sideMenu');
-
     menuBtn.addEventListener('click', () => sideMenu.classList.add('active'));
     closeMenuBtn.addEventListener('click', closeMenu);
     function closeMenu() { sideMenu.classList.remove('active'); }
 
-    // লাইভ সার্চ ফিল্টার
+    // Search Filter
     const searchBtn = document.getElementById('searchBtn');
     const searchContainer = document.getElementById('searchContainer');
-
     searchBtn.addEventListener('click', () => searchContainer.classList.toggle('active'));
 
     function filterPlatforms() {
       const input = document.getElementById('searchInput').value.toLowerCase();
       const cards = document.querySelectorAll('.platform-card');
-
       cards.forEach(card => {
-        const text = card.textContent.toLowerCase();
-        if (text.includes(input)) {
-          card.style.display = "flex";
-        } else {
-          card.style.display = "none";
-        }
+        card.style.display = card.textContent.toLowerCase().includes(input) ? "flex" : "none";
       });
+    }
+
+    // Security Score Calculator
+    function calculateScore() {
+      const total = document.querySelectorAll('.chk-item').length;
+      const checked = document.querySelectorAll('.chk-item:checked').length;
+      const percentage = Math.round((checked / total) * 100);
+      
+      document.getElementById('scoreTxt').innerText = percentage + '%';
+      document.getElementById('scoreBar').style.width = percentage + '%';
+    }
+
+    // FAQ Accordion
+    function toggleFaq(element) {
+      element.classList.toggle('active');
+    }
+
+    // Math Captcha Generator
+    let num1 = Math.floor(Math.random() * 10) + 1;
+    let num2 = Math.floor(Math.random() * 10) + 1;
+    let correctAnswer = num1 + num2;
+    document.getElementById('mathQuestion').innerText = `${num1} + ${num2} = ?`;
+
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const userAns = parseInt(document.getElementById('captchaAnswer').value);
+      if (userAns === correctAnswer) {
+        alert("আপনার মেসেজটি সফলভাবে পাঠানো হয়েছে! ধন্যবাদ।");
+        e.target.reset();
+      } else {
+        alert("ক্যাপচা উত্তরটি ভুল হয়েছে। আবার চেষ্টা করুন।");
+      }
     }
   </script>
 </body>
