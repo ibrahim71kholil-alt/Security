@@ -175,6 +175,9 @@
       font-weight: bold;
       cursor: pointer;
       text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
     }
     .btn-primary { background-color: #0284c7; color: #fff; }
     .btn-secondary { background-color: transparent; color: #38bdf8; border: 1px solid #38bdf8; }
@@ -211,6 +214,47 @@
     .stat-card h3 { font-size: 1.8rem; color: #0284c7; }
     .stat-card p { font-size: 0.9rem; font-weight: 600; color: var(--text-color); }
 
+    /* Password Security Tools Grid */
+    .tools-grid-two {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .interactive-card {
+      background-color: var(--card-bg);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .interactive-card input {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid var(--border-color);
+      border-radius: 5px;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      outline: none;
+      margin: 0.8rem 0;
+    }
+
+    /* Strength Bar */
+    .meter-bar {
+      height: 8px;
+      width: 100%;
+      background-color: var(--border-color);
+      border-radius: 5px;
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+
+    .meter-fill {
+      height: 100%;
+      width: 0%;
+      transition: width 0.3s, background-color 0.3s;
+    }
+
     /* Link Checker Box */
     .checker-box {
       background-color: var(--card-bg);
@@ -245,6 +289,43 @@
       display: none;
       font-weight: bold;
     }
+
+    /* Service Packages */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .pricing-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-align: center;
+      position: relative;
+      transition: transform 0.2s;
+    }
+
+    .pricing-card:hover { transform: translateY(-5px); border-color: #0284c7; }
+    .pricing-card.featured { border: 2px solid #0284c7; }
+    .pricing-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #0284c7;
+      color: #fff;
+      padding: 0.2rem 0.8rem;
+      font-size: 0.75rem;
+      border-radius: 12px;
+      font-weight: bold;
+    }
+
+    .pricing-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .pricing-card ul { list-style: none; margin: 1rem 0; text-align: left; font-size: 0.9rem; }
+    .pricing-card ul li { margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+    .pricing-card ul li i { color: #22c55e; }
 
     /* Platform Grid */
     .platform-grid {
@@ -598,11 +679,12 @@
     <div class="close-btn" id="closeMenuBtn"><i class="fas fa-times"></i></div>
     <ul>
       <li><a href="#" onclick="showMainHome(); closeMenu();"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="#passToolsSection" onclick="closeMenu();"><i class="fas fa-key"></i> Password Tools</a></li>
       <li><a href="#checkerSection" onclick="closeMenu();"><i class="fas fa-shield-virus"></i> Link Checker</a></li>
+      <li><a href="#servicesSection" onclick="closeMenu();"><i class="fas fa-concierge-bell"></i> Services</a></li>
       <li><a href="#checklistSection" onclick="closeMenu();"><i class="fas fa-tasks"></i> Security Checklist</a></li>
       <li><a href="#toolsSection" onclick="closeMenu();"><i class="fas fa-tools"></i> Cyber Toolkit</a></li>
       <li><a href="#faqSection" onclick="closeMenu();"><i class="fas fa-question-circle"></i> FAQ</a></li>
-      <li><a href="#linksSection" onclick="closeMenu();"><i class="fas fa-external-link-alt"></i> Official Links</a></li>
       <li><a href="#contactSection" onclick="closeMenu();"><i class="fas fa-envelope"></i> Contact Support</a></li>
     </ul>
   </div>
@@ -617,7 +699,7 @@
       </p>
       <div class="btn-container">
         <a href="#platforms" class="btn btn-primary">Get Started</a>
-        <a href="#checkerSection" class="btn btn-secondary">Scan Link</a>
+        <a href="#passToolsSection" class="btn btn-secondary"><i class="fas fa-lock"></i> Check Password</a>
       </div>
     </section>
 
@@ -639,6 +721,35 @@
         </div>
       </div>
 
+      <!-- Password Strength & Generator Tools Section -->
+      <section id="passToolsSection">
+        <h2 class="section-title">🔐 Interactive Password Tools</h2>
+        <div class="tools-grid-two">
+          
+          <!-- Tool 1: Strength Tester -->
+          <div class="interactive-card">
+            <h3><i class="fas fa-tachometer-alt" style="color: #0284c7;"></i> Password Strength Tester</h3>
+            <p style="font-size: 0.85rem; color: #64748b;">পাসওয়ার্ড টাইপ করে চেক করুন কতটা শক্তিশালী:</p>
+            <input type="text" id="passInput" placeholder="পাসওয়ার্ড লিখুন..." onkeyup="checkPasswordStrength()">
+            <div class="meter-bar"><div class="meter-fill" id="meterFill"></div></div>
+            <p style="font-size: 0.85rem; margin-top: 0.5rem;" id="strengthStatus">পাসওয়ার্ড লিখুন...</p>
+            <p style="font-size: 0.8rem; font-weight: bold; color: #0284c7;" id="crackTime"></p>
+          </div>
+
+          <!-- Tool 2: Generator -->
+          <div class="interactive-card">
+            <h3><i class="fas fa-random" style="color: #0284c7;"></i> Strong Password Generator</h3>
+            <p style="font-size: 0.85rem; color: #64748b;">হ্যাক-প্রুফ শক্তিশালী পাসওয়ার্ড জেনারেট করুন:</p>
+            <input type="text" id="generatedPass" readonly placeholder="এখানে পাসওয়ার্ড দেখাবে">
+            <div style="display: flex; gap: 0.5rem;">
+              <button class="btn btn-primary" onclick="generateStrongPassword()"><i class="fas fa-sync"></i> Generate</button>
+              <button class="btn btn-secondary" onclick="copyPassword()"><i class="fas fa-copy"></i> Copy</button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
       <!-- Phishing Link Checker Section -->
       <section id="checkerSection">
         <h2 class="section-title">🔍 Live Phishing Link Checker</h2>
@@ -649,6 +760,48 @@
             <button class="btn btn-primary" onclick="checkPhishingLink()">Scan Link</button>
           </div>
           <div class="checker-result" id="checkerResult"></div>
+        </div>
+      </section>
+
+      <!-- Services & Packages Section -->
+      <section id="servicesSection">
+        <h2 class="section-title">💼 Professional Services & Audit</h2>
+        <div class="pricing-grid">
+          
+          <div class="pricing-card">
+            <h3>Basic Audit</h3>
+            <p style="color: #0284c7; font-weight: bold;">ফ্রি গাইডলাইন</p>
+            <ul>
+              <li><i class="fas fa-check"></i> অ্যাকাউন্ট সিকিউরিটি চেক</li>
+              <li><i class="fas fa-check"></i> প্রাইভেসি সেটিংস গাইড</li>
+              <li><i class="fas fa-check"></i> 2FA সেটআপ নির্দেশিকা</li>
+            </ul>
+            <a href="#contactSection" class="btn btn-secondary" style="width: 100%;">সহযোগিতা নিন</a>
+          </div>
+
+          <div class="pricing-card featured">
+            <div class="pricing-badge">POPULAR</div>
+            <h3>Full Account Hardening</h3>
+            <p style="color: #0284c7; font-weight: bold;">প্রিমিয়াম সাপোর্ট</p>
+            <ul>
+              <li><i class="fas fa-check"></i> ফুল প্রোফাইল লকড সিকিউরিটি</li>
+              <li><i class="fas fa-check"></i> হ্যাকিং প্রটেকশন সেটআপ</li>
+              <li><i class="fas fa-check"></i> প্রাইভেট ডিরেক্ট সাপোর্ট</li>
+            </ul>
+            <a href="#contactSection" class="btn btn-primary" style="width: 100%;">যোগাযোগ করুন</a>
+          </div>
+
+          <div class="pricing-card">
+            <h3>Hacked ID Recovery</h3>
+            <p style="color: #0284c7; font-weight: bold;">রিকভারি সাপোর্ট</p>
+            <ul>
+              <li><i class="fas fa-check"></i> ডিজেবল আইডি ফাইল আপিল</li>
+              <li><i class="fas fa-check"></i> হ্যাক হওয়া অ্যাকাউন্ট রিকভারি</li>
+              <li><i class="fas fa-check"></i> NID কার্ড ভেরিফিকেশন হেল্প</li>
+            </ul>
+            <a href="#contactSection" class="btn btn-secondary" style="width: 100%;">কেস সাবমিট করুন</a>
+          </div>
+
         </div>
       </section>
 
@@ -955,6 +1108,65 @@
       });
     }
 
+    // Password Tester Logic
+    function checkPasswordStrength() {
+      const pass = document.getElementById('passInput').value;
+      const meter = document.getElementById('meterFill');
+      const status = document.getElementById('strengthStatus');
+      const timeTxt = document.getElementById('crackTime');
+
+      if (pass.length === 0) {
+        meter.style.width = '0%';
+        status.innerText = "পাসওয়ার্ড লিখুন...";
+        timeTxt.innerText = "";
+        return;
+      }
+
+      let score = 0;
+      if (pass.length >= 8) score++;
+      if (pass.length >= 12) score++;
+      if (/[A-Z]/.test(pass)) score++;
+      if (/[0-9]/.test(pass)) score++;
+      if (/[^A-Za-z0-9]/.test(pass)) score++;
+
+      if (score <= 2) {
+        meter.style.width = '30%';
+        meter.style.backgroundColor = '#ef4444';
+        status.innerText = "দুর্বল (Weak Password)";
+        timeTxt.innerText = "⚡ হ্যাকারদের ক্র্যাক করতে সময় লাগবে: কয়েক সেকেন্ড!";
+      } else if (score <= 4) {
+        meter.style.width = '65%';
+        meter.style.backgroundColor = '#f59e0b';
+        status.innerText = "মাঝারি (Medium Strength)";
+        timeTxt.innerText = "⚡ ক্র্যাক করতে সময় লাগবে: কয়েক দিন বা মাস।";
+      } else {
+        meter.style.width = '100%';
+        meter.style.backgroundColor = '#22c55e';
+        status.innerText = "খুবই শক্তিশালী (Very Strong)";
+        timeTxt.innerText = "🛡️ ক্র্যাক করতে সময় লাগবে: কয়েক বছর বা শতাব্দী!";
+      }
+    }
+
+    // Password Generator Logic
+    function generateStrongPassword() {
+      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+";
+      let password = "";
+      for (let i = 0; i < 14; i++) {
+        password += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      document.getElementById('generatedPass').value = password;
+    }
+
+    function copyPassword() {
+      const passField = document.getElementById('generatedPass');
+      if(!passField.value) {
+        alert("আগে Generate বাটনে ক্লিক করুন!");
+        return;
+      }
+      navigator.clipboard.writeText(passField.value);
+      alert("পাসওয়ার্ড ক্লিপবোর্ডে কপি করা হয়েছে!");
+    }
+
     // Link Checker Logic
     function checkPhishingLink() {
       const url = document.getElementById('urlInput').value.trim();
@@ -1010,7 +1222,8 @@
       e.preventDefault();
       const userAns = parseInt(document.getElementById('captchaAnswer').value);
       if (userAns === correctAnswer) {
-        alert("আপনার মেসেজটি সফলভাবে পাঠানো হয়েছে! ধন্যবাদ।");
+        const randomCaseId = 'SEC-' + Math.floor(1000 + Math.random() * 9000);
+        alert(`আপনার মেসেজটি সফলভাবে পাঠানো হয়েছে!\nআপনার সাপোর্ট কেস আইডি: ${randomCaseId}`);
         e.target.reset();
       } else {
         alert("ক্যাপচা উত্তরটি ভুল হয়েছে। আবার চেষ্টা করুন।");
