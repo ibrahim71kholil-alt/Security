@@ -293,39 +293,26 @@
     /* Service Packages */
     .pricing-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
+      margin-bottom: 2.5rem;
     }
 
     .pricing-card {
       background: var(--card-bg);
       border: 1px solid var(--border-color);
-      border-radius: 8px;
+      border-radius: 12px;
       padding: 1.5rem;
-      text-align: center;
       position: relative;
       transition: transform 0.2s;
     }
 
     .pricing-card:hover { transform: translateY(-5px); border-color: #0284c7; }
     .pricing-card.featured { border: 2px solid #0284c7; }
-    .pricing-badge {
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #0284c7;
-      color: #fff;
-      padding: 0.2rem 0.8rem;
-      font-size: 0.75rem;
-      border-radius: 12px;
-      font-weight: bold;
-    }
 
-    .pricing-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
-    .pricing-card ul { list-style: none; margin: 1rem 0; text-align: left; font-size: 0.9rem; }
-    .pricing-card ul li { margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
-    .pricing-card ul li i { color: #22c55e; }
+    .pricing-card h3 { font-size: 1.3rem; }
+    .pricing-card ul { list-style: none; padding: 0; margin: 1rem 0 1.5rem 0; font-size: 0.95rem; }
+    .pricing-card ul li { margin-bottom: 0.5rem; }
 
     /* Platform Grid */
     .platform-grid {
@@ -648,586 +635,438 @@
     }
   </style>
 </head>
-<body>
+<body> 
 
   <!-- Scam Alert Banner -->
   <div class="alert-banner">
-    <i class="fas fa-exclamation-triangle"></i>
-    <span>সতর্কতা: যেকোনো অপরিচিত লিংক থেকে ফ্রিতে পাসওয়ার্ড পরিবর্তন বা ভেরিফাই করার বার্তা থেকে সাবধান থাকুন!</span>
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    <span>সতর্কতা: কোনো অনলাইন সিকিউরিটি টিম কখনো আপনার ওটিপি (OTP) বা পাসওয়ার্ড চাইবে না!</span>
   </div>
 
-  <!-- Header -->
+  <!-- Header Section -->
   <header>
-    <div class="logo" onclick="showMainHome()">
-      🛡️ Social Security Hub
+    <div class="logo" onclick="location.reload()">
+      <i class="fa-solid fa-shield-halved"></i>
+      <span>Social Security Hub</span>
     </div>
-    
     <div class="header-actions">
-      <button class="action-btn" id="searchBtn" title="Search"><i class="fas fa-search"></i></button>
-      <button class="action-btn" id="themeBtn" title="Toggle Dark Mode"><i class="fas fa-moon" id="themeIcon"></i></button>
-      <button class="action-btn" id="menuBtn" title="Menu"><i class="fas fa-bars"></i></button>
+      <button class="action-btn" id="searchToggle"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <button class="action-btn" id="themeToggle"><i class="fa-solid fa-moon"></i></button>
+      <button class="action-btn" id="menuToggle"><i class="fa-solid fa-bars"></i></button>
     </div>
   </header>
 
-  <!-- Expandable Search Box -->
+  <!-- Search Container -->
   <div class="search-box-container" id="searchContainer">
-    <input type="text" id="searchInput" placeholder="Search platforms..." onkeyup="filterPlatforms()">
+    <input type="text" placeholder="কী বিষয়ে সাহায্য চান? (যেমন: Facebook recovery, 2FA)">
   </div>
 
   <!-- Side Navigation Menu -->
   <div class="side-menu" id="sideMenu">
-    <div class="close-btn" id="closeMenuBtn"><i class="fas fa-times"></i></div>
+    <div class="close-btn" id="menuClose"><i class="fa-solid fa-xmark"></i></div>
     <ul>
-      <li><a href="#" onclick="showMainHome(); closeMenu();"><i class="fas fa-home"></i> Home</a></li>
-      <li><a href="#passToolsSection" onclick="closeMenu();"><i class="fas fa-key"></i> Password Tools</a></li>
-      <li><a href="#checkerSection" onclick="closeMenu();"><i class="fas fa-shield-virus"></i> Link Checker</a></li>
-      <li><a href="#servicesSection" onclick="closeMenu();"><i class="fas fa-concierge-bell"></i> Services</a></li>
-      <li><a href="#checklistSection" onclick="closeMenu();"><i class="fas fa-tasks"></i> Security Checklist</a></li>
-      <li><a href="#toolsSection" onclick="closeMenu();"><i class="fas fa-tools"></i> Cyber Toolkit</a></li>
-      <li><a href="#faqSection" onclick="closeMenu();"><i class="fas fa-question-circle"></i> FAQ</a></li>
-      <li><a href="#contactSection" onclick="closeMenu();"><i class="fas fa-envelope"></i> Contact Support</a></li>
+      <li><a href="#"><i class="fa-solid fa-house"></i> হোম</a></li>
+      <li><a href="#servicesSection"><i class="fa-solid fa-briefcase"></i> সার্ভিস ও পেমেন্ট</a></li>
+      <li><a href="#checkerSection"><i class="fa-solid fa-link"></i> লিংক চেক</a></li>
+      <li><a href="#contactSection"><i class="fa-solid fa-envelope"></i> যোগাযোগ</a></li>
     </ul>
   </div>
 
   <!-- Main Content Wrapper -->
-  <div id="mainContainer">
-    <!-- Hero Section -->
-    <section class="hero">
-      <h1>🛡️ Protect Your Digital Life</h1>
-      <p>
-        Learn Facebook, TikTok, YouTube, Instagram, Privacy, Account Recovery, Password Security, Cyber Safety and much more.
-      </p>
+  <main class="container">
+
+    <!-- Hero Banner Section -->
+    <section class="hero" style="border-radius: 12px; margin-top: 1.5rem;">
+      <h1>আপনার সোশ্যাল মিডিয়া থাকুক সুরক্ষিত</h1>
+      <p>সাইবার সিকিউরিটি গাইডলাইন, ফিশিং লিংক চেকার ও একাউন্ট রিকভারি সহায়তা পাবেন এক ছাদের নিচে।</p>
       <div class="btn-container">
-        <a href="#platforms" class="btn btn-primary">Get Started</a>
-        <a href="#passToolsSection" class="btn btn-secondary"><i class="fas fa-lock"></i> Check Password</a>
+        <a href="#servicesSection" class="btn btn-primary"><i class="fa-solid fa-shield"></i> পেড সার্ভিসসমূহ</a>
+        <a href="#contactSection" class="btn btn-secondary"><i class="fa-solid fa-headset"></i> হেল্পলাইন</a>
       </div>
     </section>
 
-    <div class="container">
+    <!-- Live Stats Grid -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h3>১,৫০০+</h3>
+        <p>সুরক্ষিত সোশ্যাল আইডি</p>
+      </div>
+      <div class="stat-card">
+        <h3>৯৮%</h3>
+        <p>সাফল্যের হার</p>
+      </div>
+      <div class="stat-card">
+        <h3>২৪/৭</h3>
+        <p>জরুরি সাপোর্ট</p>
+      </div>
+    </div>
+
+    <!-- Password Security Tools Section -->
+    <h2 class="section-title">🔑 পাসওয়ার্ড সিকিউরিটি চেক</h2>
+    <div class="tools-grid-two">
+      <div class="interactive-card">
+        <h3>পাসওয়ার্ডের শক্তি পরীক্ষা করুন</h3>
+        <input type="password" id="passInput" placeholder="এখানে পাসওয়ার্ড টাইপ করুন" oninput="checkStrength()">
+        <div class="meter-bar">
+          <div class="meter-fill" id="meterFill"></div>
+        </div>
+        <p id="passFeedback" style="font-size: 0.85rem; margin-top: 0.5rem; color: #64748b;"></p>
+      </div>
       
-      <!-- Live Statistics Grid -->
-      <div class="stats-grid">
-        <div class="stat-card">
-          <h3>১,২০০+</h3>
-          <p>সুরক্ষিত অ্যাকাউন্ট</p>
+      <div class="interactive-card">
+        <h3>স্ট্রং পাসওয়ার্ড জেনারেটর</h3>
+        <p style="font-size: 0.9rem; color: #64748b;">একটি শক্তিশালী পাসওয়ার্ড তৈরি করতে নিচের বাটনে ক্লিক করুন:</p>
+        <button class="btn btn-primary" onclick="generatePassword()" style="margin-top: 1rem; width: 100%;">নতুন পাসওয়ার্ড তৈরি করুন</button>
+        <input type="text" id="generatedPass" readonly placeholder="এখানে পাসওয়ার্ড আসবে" style="text-align: center; font-weight: bold; font-family: monospace;">
+      </div>
+    </div>
+
+    <!-- Phishing Link Checker Section -->
+    <h2 class="section-title" id="checkerSection">🔗 সন্দিহান লিংক চেকার</h2>
+    <div class="checker-box">
+      <p>কোনো ওয়েবসাইট বা লিংকে প্রবেশ করার আগে লিংকটি আসল নাকি ফিশিং চেক করে নিন:</p>
+      <div class="checker-input-group">
+        <input type="text" id="linkInput" placeholder="https://example.com লিংকটি পেস্ট করুন">
+        <button class="btn btn-primary" onclick="checkLink()">যাচাই করুন</button>
+      </div>
+      <div class="checker-result" id="checkerResult"></div>
+    </div>
+
+    <!-- Security Checklist Section -->
+    <h2 class="section-title">🛡️ অ্যাকাউন্ট সিকিউরিটি চেকলিস্ট</h2>
+    <div class="checklist-box">
+      <p style="margin-bottom: 1rem;">আপনার আইডি কতটুকু নিরাপদ জানতে নিচের অপশনগুলো চেক করুন:</p>
+      <div class="checklist-item">
+        <input type="checkbox" class="chk-box" onchange="updateProgress()"> টু-ফ্যাক্টর অথেন্টিকেশন (2FA) চালু আছে।
+      </div>
+      <div class="checklist-item">
+        <input type="checkbox" class="chk-box" onchange="updateProgress()"> স্ট্রং ও জটিল পাসওয়ার্ড ব্যবহার করা হয়েছে।
+      </div>
+      <div class="checklist-item">
+        <input type="checkbox" class="chk-box" onchange="updateProgress()"> রিকভারি ইমেইল ও ফোন নম্বর আপডেট আছে।
+      </div>
+      <div class="checklist-item">
+        <input type="checkbox" class="chk-box" onchange="updateProgress()"> অজানা বা সন্দেহজনক কোনো ডিভাইসে লগইন নেই।
+      </div>
+      
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="chkProgress"></div>
+      </div>
+      <p id="progressText" style="text-align: center; font-weight: bold; margin-top: 0.5rem; font-size: 0.9rem;">স্কোর: ০%</p>
+    </div>
+
+    <!-- Paid Services & Automated Payment Form Section -->
+    <section id="servicesSection" style="padding: 2rem 0;">
+      <h2 class="section-title" style="text-align: center; margin-bottom: 1.5rem;">💼 Our Paid Security Services</h2>
+      
+      <!-- Pricing Cards -->
+      <div class="pricing-grid">
+        
+        <!-- Package 1 -->
+        <div class="pricing-card">
+          <h3>Basic Audit</h3>
+          <p style="color: #0284c7; font-weight: bold; font-size: 1.5rem; margin: 0.5rem 0;">৳২৯৯</p>
+          <ul>
+            <li>✅ আইডি ও পেজ সিকিউরিটি চেক</li>
+            <li>✅ 2FA ও ব্যাকআপ পিন সেটআপ</li>
+            <li>✅ ১৫ মিনিটের কনসালটেশন</li>
+          </ul>
+          <button onclick="selectPackage('Basic Audit', '299')" class="btn btn-secondary" style="width: 100%; padding: 0.8rem; cursor: pointer;">অর্ডার করুন</button>
         </div>
-        <div class="stat-card">
-          <h3>৪৫০+</h3>
-          <p>রিকভার করা আইডি</p>
+
+        <!-- Package 2 (Featured) -->
+        <div class="pricing-card featured">
+          <div style="position: absolute; top: -12px; right: 20px; background: #0284c7; color: #fff; padding: 2px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: bold;">POPULAR</div>
+          <h3>Full Security Hardening</h3>
+          <p style="color: #0284c7; font-weight: bold; font-size: 1.5rem; margin: 0.5rem 0;">৳৭৯৯</p>
+          <ul>
+            <li>✅ ফুল প্রোফাইল হ্যাকিং প্রটেকশন</li>
+            <li>✅ ফিশিং ও ডিভাইস ম্যালওয়্যার ক্লিন</li>
+            <li>✅ প্রফেশনাল ১-অন-১ সাপোর্ট</li>
+          </ul>
+          <button onclick="selectPackage('Full Security Hardening', '799')" class="btn btn-primary" style="width: 100%; padding: 0.8rem; cursor: pointer;">অর্ডার করুন</button>
         </div>
-        <div class="stat-card">
-          <h3>৯৯%</h3>
-          <p>সফলতার হার</p>
+
+        <!-- Package 3 -->
+        <div class="pricing-card">
+          <h3>Hacked ID Recovery</h3>
+          <p style="color: #0284c7; font-weight: bold; font-size: 1.5rem; margin: 0.5rem 0;">৳১,৪৯৯</p>
+          <ul>
+            <li>✅ হ্যাকড বা ডিজেবল আইডি রিভিউ</li>
+            <li>✅ মেটা হেল্পডেস্কে ম্যানুয়াল আপিল</li>
+            <li>✅ কাজ না হলে ৫০% রিফান্ড Guarantee</li>
+          </ul>
+          <button onclick="selectPackage('Hacked ID Recovery', '1499')" class="btn btn-secondary" style="width: 100%; padding: 0.8rem; cursor: pointer;">অর্ডার করুন</button>
         </div>
+
       </div>
 
-      <!-- Password Strength & Generator Tools Section -->
-      <section id="passToolsSection">
-        <h2 class="section-title">🔐 Interactive Password Tools</h2>
-        <div class="tools-grid-two">
+      <!-- Payment Box & Dynamic Form -->
+      <div style="max-width: 600px; margin: 0 auto; background: var(--card-bg); border: 2px dashed #0284c7; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
+        <h3 style="color: #0284c7; text-align: center; margin-top: 0;">💳 পেমেন্ট ও ভেরিফিকেশন ফর্ম</h3>
+        
+        <!-- Account Numbers -->
+        <div style="background: var(--bg-color); padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; text-align: center;">
+          <p style="margin: 0 0 8px 0; font-weight: bold;">নিচের নম্বরে Send Money করুন:</p>
+          <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+            <span style="color: #e2136e; font-weight: bold;">bKash (Personal): 01606598948</span>
+            <span style="color: #f7921e; font-weight: bold;">Nagad (Personal): 01632457606</span>
+          </div>
+        </div>
+
+        <!-- Payment Form -->
+        <form id="paymentForm" onsubmit="handlePaymentSubmit(event)">
+          <div style="margin-bottom: 1rem;">
+            <label style="display: block; margin-bottom: 0.3rem; font-weight: bold;">বাছাইকৃত প্যাকেজ:</label>
+            <input type="text" id="selectedPackage" value="ক্লিক করে প্যাকেজ সিলেক্ট করুন" readonly style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 6px; background: var(--bg-color); font-weight: bold; color: #0284c7;">
+          </div>
+
+          <div style="margin-bottom: 1rem;">
+            <label style="display: block; margin-bottom: 0.3rem; font-weight: bold;">আপনার নাম:</label>
+            <input type="text" id="custName" placeholder="আপনার নাম লিখুন" required style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 6px; background: var(--bg-color); color: var(--text-color);">
+          </div>
+
+          <div style="margin-bottom: 1rem;">
+            <label style="display: block; margin-bottom: 0.3rem; font-weight: bold;">পেমেন্ট মেথড:</label>
+            <select id="payMethod" required style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 6px; background: var(--bg-color); color: var(--text-color);">
+              <option value="bKash">bKash (বিকাশ)</option>
+              <option value="Nagad">Nagad (নগদ)</option>
+            </select>
+          </div>
+
+          <div style="margin-bottom: 1rem;">
+            <label style="display: block; margin-bottom: 0.3rem; font-weight: bold;">যে নম্বর থেকে টাকা পাঠিয়েছেন:</label>
+            <input type="tel" id="senderNum" placeholder="017XXXXXXXX" required style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 6px; background: var(--bg-color); color: var(--text-color);">
+          </div>
+
+          <div style="margin-bottom: 1.5rem;">
+            <label style="display: block; margin-bottom: 0.3rem; font-weight: bold;">ট্রানজেকশন আইডি (TrxID):</label>
+            <input type="text" id="trxId" placeholder="যেমন: 9J7A6K8L" required style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 6px; background: var(--bg-color); color: var(--text-color); text-transform: uppercase;">
+          </div>
+
+          <button type="submit" style="width: 100%; background: #22c55e; color: #fff; border: none; padding: 1rem; border-radius: 6px; font-weight: bold; font-size: 1rem; cursor: pointer;">
+            পেমেন্ট কনফার্ম করুন
+          </button>
+        </form>
+
+        <!-- Success Message Box (Hidden by Default) -->
+        <div id="successMsg" style="display: none; background: #dcfce7; border: 1px solid #22c55e; color: #15803d; padding: 1.5rem; border-radius: 8px; margin-top: 1rem; text-align: center;">
+          <h3 style="margin-top: 0; color: #166534;">🎉 পেমেন্ট সফল হয়েছে!</h3>
+          <p style="margin-bottom: 0.5rem;">ধন্যবাদ, <span id="resName" style="font-weight: bold;"></span>!</p>
+          <p style="font-size: 0.9rem; margin-bottom: 1rem;">আপনার TrxID: <b id="resTrx"></b> সফলভাবে সংরক্ষিত হয়েছে। আমরা দ্রুত আপনার সাথে যোগাযোগ করছি।</p>
           
-          <!-- Tool 1: Strength Tester -->
-          <div class="interactive-card">
-            <h3><i class="fas fa-tachometer-alt" style="color: #0284c7;"></i> Password Strength Tester</h3>
-            <p style="font-size: 0.85rem; color: #64748b;">পাসওয়ার্ড টাইপ করে চেক করুন কতটা শক্তিশালী:</p>
-            <input type="text" id="passInput" placeholder="পাসওয়ার্ড লিখুন..." onkeyup="checkPasswordStrength()">
-            <div class="meter-bar"><div class="meter-fill" id="meterFill"></div></div>
-            <p style="font-size: 0.85rem; margin-top: 0.5rem;" id="strengthStatus">পাসওয়ার্ড লিখুন...</p>
-            <p style="font-size: 0.8rem; font-weight: bold; color: #0284c7;" id="crackTime"></p>
-          </div>
-
-          <!-- Tool 2: Generator -->
-          <div class="interactive-card">
-            <h3><i class="fas fa-random" style="color: #0284c7;"></i> Strong Password Generator</h3>
-            <p style="font-size: 0.85rem; color: #64748b;">হ্যাক-প্রুফ শক্তিশালী পাসওয়ার্ড জেনারেট করুন:</p>
-            <input type="text" id="generatedPass" readonly placeholder="এখানে পাসওয়ার্ড দেখাবে">
-            <div style="display: flex; gap: 0.5rem;">
-              <button class="btn btn-primary" onclick="generateStrongPassword()"><i class="fas fa-sync"></i> Generate</button>
-              <button class="btn btn-secondary" onclick="copyPassword()"><i class="fas fa-copy"></i> Copy</button>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- Phishing Link Checker Section -->
-      <section id="checkerSection">
-        <h2 class="section-title">🔍 Live Phishing Link Checker</h2>
-        <div class="checker-box">
-          <p>কোনো সন্দেহজনক লিংক পেয়ে থাকলে নিচে পেস্ট করে স্ক্যান করুন:</p>
-          <div class="checker-input-group">
-            <input type="text" id="urlInput" placeholder="https://example.com/login-verify">
-            <button class="btn btn-primary" onclick="checkPhishingLink()">Scan Link</button>
-          </div>
-          <div class="checker-result" id="checkerResult"></div>
-        </div>
-      </section>
-
-      <!-- Services & Packages Section -->
-      <section id="servicesSection">
-        <h2 class="section-title">💼 Professional Services & Audit</h2>
-        <div class="pricing-grid">
-          
-          <div class="pricing-card">
-            <h3>Basic Audit</h3>
-            <p style="color: #0284c7; font-weight: bold;">ফ্রি গাইডলাইন</p>
-            <ul>
-              <li><i class="fas fa-check"></i> অ্যাকাউন্ট সিকিউরিটি চেক</li>
-              <li><i class="fas fa-check"></i> প্রাইভেসি সেটিংস গাইড</li>
-              <li><i class="fas fa-check"></i> 2FA সেটআপ নির্দেশিকা</li>
-            </ul>
-            <a href="#contactSection" class="btn btn-secondary" style="width: 100%;">সহযোগিতা নিন</a>
-          </div>
-
-          <div class="pricing-card featured">
-            <div class="pricing-badge">POPULAR</div>
-            <h3>Full Account Hardening</h3>
-            <p style="color: #0284c7; font-weight: bold;">প্রিমিয়াম সাপোর্ট</p>
-            <ul>
-              <li><i class="fas fa-check"></i> ফুল প্রোফাইল লকড সিকিউরিটি</li>
-              <li><i class="fas fa-check"></i> হ্যাকিং প্রটেকশন সেটআপ</li>
-              <li><i class="fas fa-check"></i> প্রাইভেট ডিরেক্ট সাপোর্ট</li>
-            </ul>
-            <a href="#contactSection" class="btn btn-primary" style="width: 100%;">যোগাযোগ করুন</a>
-          </div>
-
-          <div class="pricing-card">
-            <h3>Hacked ID Recovery</h3>
-            <p style="color: #0284c7; font-weight: bold;">রিকভারি সাপোর্ট</p>
-            <ul>
-              <li><i class="fas fa-check"></i> ডিজেবল আইডি ফাইল আপিল</li>
-              <li><i class="fas fa-check"></i> হ্যাক হওয়া অ্যাকাউন্ট রিকভারি</li>
-              <li><i class="fas fa-check"></i> NID কার্ড ভেরিফিকেশন হেল্প</li>
-            </ul>
-            <a href="#contactSection" class="btn btn-secondary" style="width: 100%;">কেস সাবমিট করুন</a>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- Supported Platforms Grid -->
-      <section id="platforms">
-        <h2 class="section-title">Select Your Platform</h2>
-        <div class="platform-grid" id="platformGrid">
-          <div class="platform-card" onclick="openGuideline('facebook')">
-            <i class="fab fa-facebook"></i><span>Facebook</span>
-          </div>
-          <div class="platform-card" onclick="openGuideline('tiktok')">
-            <i class="fab fa-tiktok"></i><span>TikTok</span>
-          </div>
-          <div class="platform-card" onclick="openGuideline('youtube')">
-            <i class="fab fa-youtube"></i><span>YouTube</span>
-          </div>
-          <div class="platform-card" onclick="openGuideline('instagram')">
-            <i class="fab fa-instagram"></i><span>Instagram</span>
-          </div>
-          <div class="platform-card" onclick="openGuideline('whatsapp')">
-            <i class="fab fa-whatsapp"></i><span>WhatsApp</span>
-          </div>
-          <div class="platform-card" onclick="openGuideline('telegram')">
-            <i class="fab fa-telegram"></i><span>Telegram</span>
-          </div>
-          <div class="platform-card" onclick="openGuideline('messenger')">
-            <i class="fab fa-facebook-messenger"></i><span>Messenger</span>
-          </div>
-          <div class="platform-card" onclick="openGuideline('twitter')">
-            <i class="fab fa-x-twitter"></i><span>X (Twitter)</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- Cyber Security Toolkit Section -->
-      <section id="toolsSection">
-        <h2 class="section-title">🛠️ Essential Cyber Security Tools</h2>
-        <div class="toolkit-grid">
-          <a href="https://haveibeenpwned.com/" target="_blank" class="tool-card">
-            <i class="fas fa-user-secret"></i>
-            <div><strong>HaveIBeenPwned</strong><br><small>ইমেইল বা ডেটা লিক চেক করুন</small></div>
-          </a>
-          <a href="https://authy.com/" target="_blank" class="tool-card">
-            <i class="fas fa-key"></i>
-            <div><strong>Authy 2FA</strong><br><small>নিরাপদ ২-স্টেপ অ্যাপ</small></div>
-          </a>
-          <a href="https://protonvpn.com/" target="_blank" class="tool-card">
-            <i class="fas fa-user-shield"></i>
-            <div><strong>Proton VPN</strong><br><small>প্রাইভেট এনক্রিপ্টেড ব্রাউজিং</small></div>
+          <a id="waDirectBtn" href="#" target="_blank" style="display: inline-block; background: #25d366; color: #fff; text-decoration: none; padding: 0.7rem 1.2rem; border-radius: 6px; font-weight: bold; font-size: 0.9rem;">
+            💬 হোয়াটসঅ্যাপে মেসেজ নিশ্চিত করুন
           </a>
         </div>
-      </section>
 
-      <!-- Security Checklist Section -->
-      <section id="checklistSection">
-        <h2 class="section-title">🛡️ Quick Security Checklist</h2>
-        <div class="checklist-box">
-          <p style="margin-bottom: 1rem;">আপনার সোশ্যাল মিডিয়া অ্যাকাউন্ট কতটা সুরক্ষিত? টিক চিহ্ন দিয়ে চেক করুন:</p>
-          <div class="checklist-item">
-            <input type="checkbox" class="chk-item" onchange="calculateScore()"> 2-Factor Authentication (2FA) চালু করেছি।
-          </div>
-          <div class="checklist-item">
-            <input type="checkbox" class="chk-item" onchange="calculateScore()"> পাসওয়ার্ডে বড় হাতের অক্ষর, সংখ্যা ও স্পেশাল ক্যারেক্টার আছে।
-          </div>
-          <div class="checklist-item">
-            <input type="checkbox" class="chk-item" onchange="calculateScore()"> ইমেইল এবং রিকভারি ফোন নম্বর সম্পূর্ণ আপডেট আছে।
-          </div>
-          <div class="checklist-item">
-            <input type="checkbox" class="chk-item" onchange="calculateScore()"> কোনো সন্দেহজনক বা থার্ড-পার্টি অ্যাপের এক্সেস বন্ধ রেখেছি।
-          </div>
+      </div>
+    </section>
 
-          <div style="margin-top: 1rem; font-weight: bold;">
-            আপনার সিকিউরিটি স্কোর: <span id="scoreTxt">0%</span>
-          </div>
-          <div class="progress-bar-container">
-            <div class="progress-bar" id="scoreBar"></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- User Reviews / Testimonials -->
-      <section id="testimonialSection">
-        <h2 class="section-title">💬 User Feedback & Reviews</h2>
-        <div class="testimonial-grid">
-          <div class="testimonial-card">
-            <p>"আমার ডিজেবল হওয়া ফেসবুক আইডিটি মাত্র ২ দিনে রিকভার করে পেয়েছি। অনেক ধন্যবাদ ভাই!"</p>
-            <div class="testimonial-user"><i class="fas fa-user-circle"></i> তানভীর আহমেদ</div>
-          </div>
-          <div class="testimonial-card">
-            <p>"আমার ফেসবুকের ২-ফ্যাক্টর কোড আসছিল না। গাইডলাইন দেখে নিজেই ঠিক করতে পেরেছি।"</p>
-            <div class="testimonial-user"><i class="fas fa-user-circle"></i> সাব্বির হোসেন</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- FAQ Section -->
-      <section id="faqSection">
-        <h2 class="section-title">❓ Frequently Asked Questions (FAQ)</h2>
-        <div class="faq-item" onclick="toggleFaq(this)">
-          <div class="faq-question">আইডি ডিজেবল হলে রিকভার হতে কতদিন সময় লাগে? <i class="fas fa-chevron-down"></i></div>
-          <div class="faq-answer">সাধারণত অফিসিয়াল আপিল ফর্ম সাবমিট করার ২৪ থেকে ৭২ ঘণ্টার মধ্যে রেসপন্স পাওয়া যায়। তবে ছুটির দিনে কিছুটা সময় লাগতে পারে।</div>
-        </div>
-        <div class="faq-item" onclick="toggleFaq(this)">
-          <div class="faq-question">NID কার্ডের তথ্যের সাথে ফেসবুক আইডির মিল না থাকলে করণীয় কী? <i class="fas fa-chevron-down"></i></div>
-          <div class="faq-answer">যদি আপনার আইডির নাম NID এর সাথে না মিলে, তবে রিকভারির সুযোগ খুবই কম থাকে। তাই সবসময় আইডিতে নিজের আসল নাম ব্যবহার করা উচিত।</div>
-        </div>
-        <div class="faq-item" onclick="toggleFaq(this)">
-          <div class="faq-question">2-Factor Authentication টেক্সট মেসেজ না আসলে কী করব? <i class="fas fa-chevron-down"></i></div>
-          <div class="faq-answer">মোবাইল মেসেজের বদলে Google Authenticator বা 2FA অ্যাপ ব্যবহার করা সবচেয়ে নিরাপদ, যা মেসেজ ছাড়াই কোড জেনারেট করতে পারে।</div>
-        </div>
-      </section>
-
-      <!-- Official Links Section -->
-      <section id="linksSection">
-        <h2 class="section-title">🔗 Official Help Links</h2>
-        <div class="quick-links-grid">
-          <a href="https://www.facebook.com/hacked" target="_blank" class="quick-link-btn"><i class="fab fa-facebook"></i> FB Hacked Recovery</a>
-          <a href="https://www.facebook.com/help/contact/260749603972907" target="_blank" class="quick-link-btn"><i class="fas fa-id-card"></i> FB Identity Verification</a>
-          <a href="https://support.google.com/youtube" target="_blank" class="quick-link-btn"><i class="fab fa-youtube"></i> YouTube Support</a>
-          <a href="https://support.tiktok.com" target="_blank" class="quick-link-btn"><i class="fab fa-tiktok"></i> TikTok Center</a>
-        </div>
-      </section>
-
-      <!-- Direct Contact & Support Section -->
-      <section id="contactSection">
-        <h2 class="section-title">📩 Contact & Direct Support</h2>
-        <div class="contact-container">
-          
-          <div class="contact-methods">
-            <a href="https://t.me/evu948" target="_blank" class="contact-card">
-              <i class="fab fa-telegram" style="color: #0088cc;"></i>
-              <div class="details">
-                <h4>Telegram</h4>
-                <p>t.me/evu948</p>
-              </div>
-            </a>
-
-            <a href="https://www.facebook.com/share/1CzeyKLWAX/" target="_blank" class="contact-card">
-              <i class="fab fa-facebook" style="color: #1877f2;"></i>
-              <div class="details">
-                <h4>Facebook</h4>
-                <p>Connect on Facebook</p>
-              </div>
-            </a>
-
-            <a href="mailto:itsfaruk760@gmail.com" class="contact-card">
-              <i class="fas fa-envelope" style="color: #ea4335;"></i>
-              <div class="details">
-                <h4>Email</h4>
-                <p>itsfaruk760@gmail.com</p>
-              </div>
-            </a>
-          </div>
-
-          <form class="contact-form" onsubmit="handleContactSubmit(event)">
-            <p style="margin-bottom: 1rem; font-weight: bold; color: #0284c7;">অথবা সরাসরি ওয়েবসাইটের মাধ্যমে মেসেজ পাঠান:</p>
-            <div class="form-group">
-              <label>আপনার নাম:</label>
-              <input type="text" required placeholder="আপনার নাম লিখুন">
-            </div>
-            <div class="form-group">
-              <label>ইমেইল ঠিকানা:</label>
-              <input type="email" required placeholder="example@mail.com">
-            </div>
-            <div class="form-group">
-              <label>সমস্যার বিস্তারিত:</label>
-              <textarea rows="4" required placeholder="আপনার সমস্যাটি বিস্তারিত লিখুন..."></textarea>
-            </div>
-            <div class="form-group">
-              <label><span id="mathQuestion"></span> (ক্যাপচা সমাধান করুন):</label>
-              <input type="number" id="captchaAnswer" required placeholder="উত্তর">
-            </div>
-            <button type="submit" class="btn btn-primary" style="width: 100%;">মেসেজ পাঠান</button>
-          </form>
-
-        </div>
-      </section>
-    </div>
-  </div>
-
-  <!-- Dynamic Guideline Page View -->
-  <div class="guideline-page" id="guidelinePage">
-    <button class="back-btn" onclick="showMainHome()"><i class="fas fa-arrow-left"></i> Back to Home</button>
-    
-    <div class="guideline-header">
-      <i id="guideIcon"></i>
-      <h2 id="guideTitle">Platform Guidelines</h2>
+    <!-- FAQ Section -->
+    <h2 class="section-title">❓ সাধারণ জিজ্ঞাসাবলী (FAQ)</h2>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        আইডি হ্যাক হলে প্রথম কাজ কী?
+        <i class="fa-solid fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        প্রথমে আপনার ইমেইল চেক করে দেখুন কোনো "Password Change" এর ইমেইল এসেছে কিনা। সেখানে থাকা "Secured Your Account" অপশনে ক্লিক করার চেষ্টা করুন।
+      </div>
     </div>
 
-    <div class="guideline-content" id="guideBody"></div>
-  </div>
-
-  <!-- Privacy Policy Modal -->
-  <div class="modal" id="privacyModal">
-    <div class="modal-content">
-      <span class="close-modal" onclick="closePrivacyModal()">&times;</span>
-      <h3>🔒 Privacy Policy & Terms</h3>
-      <p style="margin-top: 1rem; font-size: 0.9rem;">
-        আমরা ব্যবহারকারীদের তথ্য এবং নিরাপত্তার সুরক্ষাকে সর্বাধিক গুরুত্ব দেই। আমাদের ওয়েবসাইটের মাধ্যমে কোনো ব্যক্তিগত তথ্য তৃতীয় পক্ষের কাছে শেয়ার করা হয় না।
-      </p>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        পেমেন্ট করার পর সার্ভিস পেতে কতক্ষণ লাগবে?
+        <i class="fa-solid fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        পেমেন্ট ফর্ম সাবমিট বা হোয়াটসঅ্যাপে মেসেজ দেওয়ার ১৫-৩০ মিনিটের মধ্যে আমাদের সিকিউরিটি টিম আপনার সাথে যোগাযোগ করবে।
+      </div>
     </div>
-  </div>
+
+    <!-- Contact Section -->
+    <h2 class="section-title" id="contactSection">📞 সরাসরি যোগাযোগ</h2>
+    <div class="contact-container">
+      <div class="contact-methods">
+        <a href="https://wa.me/8801606598948" target="_blank" class="contact-card">
+          <i class="fa-brands fa-whatsapp" style="color: #25d366;"></i>
+          <div class="details">
+            <h4>WhatsApp</h4>
+            <p>01606598948</p>
+          </div>
+        </a>
+        
+        <a href="tel:01606598948" class="contact-card">
+          <i class="fa-solid fa-phone" style="color: #0284c7;"></i>
+          <div class="details">
+            <h4>Direct Call</h4>
+            <p>01606598948</p>
+          </div>
+        </a>
+      </div>
+
+      <form class="contact-form" onsubmit="event.preventDefault(); alert('ধন্যবাদ! আপনার মেসেজটি পাওয়া গেছে।');">
+        <div class="form-group">
+          <label>আপনার নাম:</label>
+          <input type="text" required placeholder="আপনার নাম">
+        </div>
+        <div class="form-group">
+          <label>মেসেজ / সমস্যার বিস্তারিত:</label>
+          <textarea rows="4" required placeholder="কী সমস্যায় পড়েছেন লিখুন..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">মেসেজ পাঠান</button>
+      </form>
+    </div>
+
+  </main>
 
   <!-- Footer -->
   <footer>
     <p>&copy; 2026 Social Security Hub. All Rights Reserved.</p>
-    <p><a onclick="openPrivacyModal()">Privacy Policy & Terms</a></p>
   </footer>
 
-  <!-- JavaScript Logic -->
+  <!-- Combined JavaScript Logic -->
   <script>
-    const platformData = {
-      facebook: {
-        title: "Facebook Complete Security & Recovery Hub",
-        icon: "fab fa-facebook",
-        color: "#1877f2",
-        sections: [
-          {
-            topic: "🔑 ১. ফেসবুক আইডি রিকভারি (Account Recovery)",
-            details: "<p>পাসওয়ার্ড ভুলে গেলে বা অ্যাকাউন্ট হ্যাক হলে Forgot Password অথবা <b>facebook.com/hacked</b> লিংকে গিয়ে রিকভারি শুরু করুন।</p>",
-            youtubeVideoId: "d9MyW72ELq0"
-          },
-          {
-            topic: "🚫 ২. ডিজেবল ও সাসপেন্ড আইডি সমাধান",
-            details: "<p>কমিউনিটি ভায়োলেশনের কারণে আইডি ডিজেবল হলে আপনার আসল NID সাবমিট করে আপিল করুন।</p>",
-            youtubeVideoId: "d9MyW72ELq0"
-          }
-        ]
-      },
-      tiktok: { title: "TikTok Hub", icon: "fab fa-tiktok", color: "#000000", sections: [{ topic: "🔑 ১. অ্যাকাউন্ট রিকভারি", details: "<p>ফোন ও ইমেইল ভেরিফিকেশন করার গাইড।</p>", youtubeVideoId: "d9MyW72ELq0" }] },
-      youtube: { title: "YouTube Hub", icon: "fab fa-youtube", color: "#ff0000", sections: [{ topic: "🛡️ ১. সিকিউরিটি সেটআপ", details: "<p>জিমেইল 2FA নিরাপত্তা গাইড।</p>", youtubeVideoId: "d9MyW72ELq0" }] },
-      instagram: { title: "Instagram Hub", icon: "fab fa-instagram", color: "#e4405f", sections: [{ topic: "🛡️ সুরক্ষার নিয়ম", details: "<p>লগইন সিকিউরিটি সেটিংস।</p>", youtubeVideoId: "d9MyW72ELq0" }] },
-      whatsapp: { title: "WhatsApp Hub", icon: "fab fa-whatsapp", color: "#25d366", sections: [{ topic: "🛡️ পিন ও প্রাইভেসি", details: "<p>২-স্টেপ ভেরিফিকেশন পিন সেটআপ।</p>", youtubeVideoId: "d9MyW72ELq0" }] },
-      telegram: { title: "Telegram Hub", icon: "fab fa-telegram", color: "#0088cc", sections: [{ topic: "🛡️ ক্লাউড পাসওয়ার্ড", details: "<p>টেলিগ্রাম পাসকোড লক পদ্ধতি।</p>", youtubeVideoId: "d9MyW72ELq0" }] },
-      messenger: { title: "Messenger Hub", icon: "fab fa-facebook-messenger", color: "#0084ff", sections: [{ topic: "🛡️ সিক্রেট চ্যাট", details: "<p>এন্ড-টু-এন্ড এনক্রিপশন সিস্টেম।</p>", youtubeVideoId: "d9MyW72ELq0" }] },
-      twitter: { title: "X (Twitter) Hub", icon: "fab fa-x-twitter", color: "#000000", sections: [{ topic: "🛡️ টুইটার নিরাপত্তা", details: "<p>টু-ফ্যাক্টর সিকিউরিটি সেটআপ।</p>", youtubeVideoId: "d9MyW72ELq0" }] }
-    };
-
-    function openGuideline(platformKey) {
-      const data = platformData[platformKey];
-      if (!data) return;
-
-      document.getElementById('mainContainer').style.display = 'none';
-      
-      const guidePage = document.getElementById('guidelinePage');
-      const guideIcon = document.getElementById('guideIcon');
-      
-      guideIcon.className = data.icon;
-      guideIcon.style.color = data.color;
-      document.getElementById('guideTitle').innerText = data.title;
-      
-      let bodyHTML = "";
-      data.sections.forEach(sec => {
-        bodyHTML += `
-          <div class="topic-card">
-            <h3>${sec.topic}</h3>
-            <div>${sec.details}</div>
-            ${sec.youtubeVideoId ? `
-              <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/${sec.youtubeVideoId}" allowfullscreen></iframe>
-              </div>
-            ` : ''}
-          </div>
-        `;
-      });
-
-      document.getElementById('guideBody').innerHTML = bodyHTML;
-      guidePage.classList.add('active');
-      window.scrollTo(0, 0);
-    }
-
-    function showMainHome() {
-      document.getElementById('guidelinePage').classList.remove('active');
-      document.getElementById('mainContainer').style.display = 'block';
-      window.scrollTo(0, 0);
-    }
-
-    // Theme Toggle
-    const themeBtn = document.getElementById('themeBtn');
-    const themeIcon = document.getElementById('themeIcon');
+    // Theme Toggle Logic
+    const themeBtn = document.getElementById('themeToggle');
     themeBtn.addEventListener('click', () => {
       document.body.classList.toggle('dark-mode');
-      themeIcon.className = document.body.classList.contains('dark-mode') ? 'fas fa-sun' : 'fas fa-moon';
+      const icon = themeBtn.querySelector('i');
+      if (document.body.classList.contains('dark-mode')) {
+        icon.classList.replace('fa-moon', 'fa-sun');
+      } else {
+        icon.classList.replace('fa-sun', 'fa-moon');
+      }
     });
 
-    // Side Menu
-    const menuBtn = document.getElementById('menuBtn');
-    const closeMenuBtn = document.getElementById('closeMenuBtn');
+    // Side Navigation Toggle
+    const menuBtn = document.getElementById('menuToggle');
+    const menuClose = document.getElementById('menuClose');
     const sideMenu = document.getElementById('sideMenu');
-    menuBtn.addEventListener('click', () => sideMenu.classList.add('active'));
-    closeMenuBtn.addEventListener('click', closeMenu);
-    function closeMenu() { sideMenu.classList.remove('active'); }
 
-    // Search Filter
-    const searchBtn = document.getElementById('searchBtn');
+    menuBtn.addEventListener('click', () => sideMenu.classList.add('active'));
+    menuClose.addEventListener('click', () => sideMenu.classList.remove('active'));
+
+    // Search Bar Toggle
+    const searchBtn = document.getElementById('searchToggle');
     const searchContainer = document.getElementById('searchContainer');
     searchBtn.addEventListener('click', () => searchContainer.classList.toggle('active'));
 
-    function filterPlatforms() {
-      const input = document.getElementById('searchInput').value.toLowerCase();
-      const cards = document.querySelectorAll('.platform-card');
-      cards.forEach(card => {
-        card.style.display = card.textContent.toLowerCase().includes(input) ? "flex" : "none";
-      });
-    }
-
-    // Password Tester Logic
-    function checkPasswordStrength() {
+    // Password Strength Checker Logic
+    function checkStrength() {
       const pass = document.getElementById('passInput').value;
       const meter = document.getElementById('meterFill');
-      const status = document.getElementById('strengthStatus');
-      const timeTxt = document.getElementById('crackTime');
-
-      if (pass.length === 0) {
-        meter.style.width = '0%';
-        status.innerText = "পাসওয়ার্ড লিখুন...";
-        timeTxt.innerText = "";
-        return;
-      }
-
+      const feedback = document.getElementById('passFeedback');
+      
       let score = 0;
-      if (pass.length >= 8) score++;
-      if (pass.length >= 12) score++;
-      if (/[A-Z]/.test(pass)) score++;
-      if (/[0-9]/.test(pass)) score++;
-      if (/[^A-Za-z0-9]/.test(pass)) score++;
+      if (pass.length >= 8) score += 25;
+      if (/[A-Z]/.test(pass)) score += 25;
+      if (/[0-9]/.test(pass)) score += 25;
+      if (/[^A-Za-z0-9]/.test(pass)) score += 25;
 
-      if (score <= 2) {
-        meter.style.width = '30%';
+      meter.style.width = score + '%';
+
+      if (score <= 25) {
         meter.style.backgroundColor = '#ef4444';
-        status.innerText = "দুর্বল (Weak Password)";
-        timeTxt.innerText = "⚡ হ্যাকারদের ক্র্যাক করতে সময় লাগবে: কয়েক সেকেন্ড!";
-      } else if (score <= 4) {
-        meter.style.width = '65%';
+        feedback.innerText = 'পাসওয়ার্ডটি খুবই দুর্বল!';
+      } else if (score <= 50) {
         meter.style.backgroundColor = '#f59e0b';
-        status.innerText = "মাঝারি (Medium Strength)";
-        timeTxt.innerText = "⚡ ক্র্যাক করতে সময় লাগবে: কয়েক দিন বা মাস।";
+        feedback.innerText = 'পাসওয়ার্ডের মান মাঝারি।';
+      } else if (score <= 75) {
+        meter.style.backgroundColor = '#3b82f6';
+        feedback.innerText = 'পাসওয়ার্ডটি বেশ ভালো।';
       } else {
-        meter.style.width = '100%';
         meter.style.backgroundColor = '#22c55e';
-        status.innerText = "খুবই শক্তিশালী (Very Strong)";
-        timeTxt.innerText = "🛡️ ক্র্যাক করতে সময় লাগবে: কয়েক বছর বা শতাব্দী!";
+        feedback.innerText = 'পাসওয়ার্ডটি অত্যন্ত শক্তিশালী! 🔒';
       }
     }
 
-    // Password Generator Logic
-    function generateStrongPassword() {
-      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+";
+    // Password Generator
+    function generatePassword() {
+      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
       let password = "";
-      for (let i = 0; i < 14; i++) {
+      for (let i = 0; i < 12; i++) {
         password += chars.charAt(Math.floor(Math.random() * chars.length));
       }
       document.getElementById('generatedPass').value = password;
     }
 
-    function copyPassword() {
-      const passField = document.getElementById('generatedPass');
-      if(!passField.value) {
-        alert("আগে Generate বাটনে ক্লিক করুন!");
-        return;
-      }
-      navigator.clipboard.writeText(passField.value);
-      alert("পাসওয়ার্ড ক্লিপবোর্ডে কপি করা হয়েছে!");
-    }
-
-    // Link Checker Logic
-    function checkPhishingLink() {
-      const url = document.getElementById('urlInput').value.trim();
-      const result = document.getElementById('checkerResult');
+    // Phishing Link Checker Simulation
+    function checkLink() {
+      const link = document.getElementById('linkInput').value.toLowerCase();
+      const res = document.getElementById('checkerResult');
       
-      if(!url) {
-        alert("দয়া করে একটি লিংক লিখুন!");
+      if (!link) {
+        alert("দয়া করে একটি লিংক দিন!");
         return;
       }
 
-      result.style.display = "block";
+      res.style.display = 'block';
       
-      const suspiciousKeywords = ['free-fb', 'gift-card', 'login-verify', 'security-update-fb', 'claim-bonus'];
-      const isSuspicious = suspiciousKeywords.some(keyword => url.toLowerCase().includes(keyword));
-
-      if (isSuspicious) {
-        result.style.backgroundColor = "#fee2e2";
-        result.style.color = "#dc2626";
-        result.innerHTML = "⚠️ সতর্কতা: লিংকটি ফিশিং স্ক্যাম বা ক্ষতিকারক হতে পারে!";
+      if (link.includes('facebook') || link.includes('google') || link.includes('bkash')) {
+        if (link.includes('.com') || link.includes('.net')) {
+          res.style.background = '#dcfce7';
+          res.style.color = '#15803d';
+          res.innerText = '✅ এই লিংকটি নিরাপদ মনে হচ্ছে।';
+        } else {
+          res.style.background = '#fee2e2';
+          res.style.color = '#b91c1c';
+          res.innerText = '⚠️ সতর্ক থাকুন! এটি ফিশিং/নকল লিংক হতে পারে।';
+        }
       } else {
-        result.style.backgroundColor = "#dcfce7";
-        result.style.color = "#16a34a";
-        result.innerHTML = "✅ নিরাপদ মনে হচ্ছে! তবে যেকোনো লিংকে ব্যক্তিগত পাসওয়ার্ড দেওয়ার আগে সাবধান থাকুন।";
+        res.style.background = '#fef3c7';
+        res.style.color = '#b45309';
+        res.innerText = '🔍 অচেনা লিংক। প্রবেশ করার আগে সতর্ক থাকুন।';
       }
     }
 
-    // Security Score Calculator
-    function calculateScore() {
-      const total = document.querySelectorAll('.chk-item').length;
-      const checked = document.querySelectorAll('.chk-item:checked').length;
-      const percentage = Math.round((checked / total) * 100);
+    // Checklist Progress Calculator
+    function updateProgress() {
+      const chks = document.querySelectorAll('.chk-box');
+      let checkedCount = 0;
+      chks.forEach(chk => { if(chk.checked) checkedCount++; });
       
-      document.getElementById('scoreTxt').innerText = percentage + '%';
-      document.getElementById('scoreBar').style.width = percentage + '%';
+      const percent = Math.round((checkedCount / chks.length) * 100);
+      document.getElementById('chkProgress').style.width = percent + '%';
+      document.getElementById('progressText').innerText = `স্কোর: ${percent}%`;
     }
 
-    // FAQ Accordion
+    // FAQ Accordion Toggle
     function toggleFaq(element) {
-      element.classList.toggle('active');
+      const item = element.parentElement;
+      item.classList.toggle('active');
     }
 
-    // Modal
-    function openPrivacyModal() { document.getElementById('privacyModal').style.display = 'flex'; }
-    function closePrivacyModal() { document.getElementById('privacyModal').style.display = 'none'; }
+    // Package Selection Function
+    function selectPackage(pkgName, price) {
+      document.getElementById('selectedPackage').value = pkgName + " (৳" + price + ")";
+      document.getElementById('paymentForm').scrollIntoView({ behavior: 'smooth' });
+    }
 
-    // Math Captcha Generator
-    let num1 = Math.floor(Math.random() * 10) + 1;
-    let num2 = Math.floor(Math.random() * 10) + 1;
-    let correctAnswer = num1 + num2;
-    document.getElementById('mathQuestion').innerText = `${num1} + ${num2} = ?`;
+    // Form Submit Handler
+    function handlePaymentSubmit(event) {
+      event.preventDefault();
 
-    function handleContactSubmit(e) {
-      e.preventDefault();
-      const userAns = parseInt(document.getElementById('captchaAnswer').value);
-      if (userAns === correctAnswer) {
-        const randomCaseId = 'SEC-' + Math.floor(1000 + Math.random() * 9000);
-        alert(`আপনার মেসেজটি সফলভাবে পাঠানো হয়েছে!\nআপনার সাপোর্ট কেস আইডি: ${randomCaseId}`);
-        e.target.reset();
-      } else {
-        alert("ক্যাপচা উত্তরটি ভুল হয়েছে। আবার চেষ্টা করুন।");
+      const pkg = document.getElementById('selectedPackage').value;
+      const name = document.getElementById('custName').value;
+      const method = document.getElementById('payMethod').value;
+      const phone = document.getElementById('senderNum').value;
+      const trx = document.getElementById('trxId').value;
+
+      if (pkg === "ক্লিক করে প্যাকেজ সিলেক্ট করুন") {
+        alert("দয়া করে আগে একটি প্যাকেজ সিলেক্ট করুন!");
+        return;
       }
+
+      document.getElementById('paymentForm').style.display = 'none';
+      document.getElementById('resName').innerText = name;
+      document.getElementById('resTrx').innerText = trx;
+
+      const waText = `Hello!%20আমি%20পেমেন্ট%20সম্পন্ন%20করেছি।%0A%0A📌%20প্যাকেজ:%20${encodeURIComponent(pkg)}%0A👤%20নাম:%20${encodeURIComponent(name)}%0A💳%20মেথড:%20${method}%0A📞%20নম্বর:%20${phone}%0A🧾%20TrxID:%20${trx}`;
+      
+      document.getElementById('waDirectBtn').href = `https://wa.me/8801606598948?text=${waText}`;
+      document.getElementById('successMsg').style.display = 'block';
     }
   </script>
 </body>
